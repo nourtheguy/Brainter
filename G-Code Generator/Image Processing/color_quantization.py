@@ -67,25 +67,25 @@ def save_image(image, output_path):
 # Define your 12 preset colors (example RGB values)
 preset_colors = np.array(
     [
+        [232, 238, 251],  # Grey
         [255, 0, 0],  # Red
-        [0, 255, 0],  # Green
+        [0, 128, 0],  # Green (Darker Shade)
         [0, 0, 255],  # Blue
         [0, 255, 255],  # Cyan
         [255, 0, 255],  # Magenta
         [255, 255, 0],  # Yellow
         [255, 165, 0],  # Orange
-        [127, 255, 0],  # Chartreuse Green
-        [0, 255, 127],  # Spring Green
+        [128, 128, 0],  # Olive Green
+        [0, 128, 128],  # Teal
         [0, 127, 255],  # Azure
-        [127, 0, 255],  # Violet
-        [255, 0, 127],  # Rose
+        [128, 0, 0],  # Maroon
     ]
 )
 
 # Example usage
 if __name__ == "__main__":
-    input_image_path = "img.png"
-    output_image_path = "image_new.png"
+    input_image_path = "G-Code Generator/Assets/img_2.png"
+    output_image_path = "G-Code Generator/Assets/img_2_quantized.png"
 
     try:
         processed_image = k_means_color_reduction(input_image_path, preset_colors)
