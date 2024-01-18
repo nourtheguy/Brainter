@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from sklearn.cluster import KMeans
 
 
 def find_closest_color(pixel, colors):
@@ -15,41 +16,81 @@ def find_closest_color(pixel, colors):
     return colors[index_of_smallest]
 
 
-def apply_fixed_palette_color_reduction(image, colors):
+def k_means_cluster_colors(image, num_clusters):
     """
-    Reduces the number of colors in an image using a fixed palette.
+    Apply K-means clustering to the image to find main colors.
 
     :param image: The original image.
-    :param colors: Array of RGB values of the predefined colors.
-    :return: Image with reduced color palette.
+    :param num_clusters: Number of clusters to use in K-means.
+    :return: Array of centroid colors from K-means clustering.
     """
-    # Create an empty array for the new image
-    new_image = np.zeros_like(image)
+    # Reshape the image to be a list of pixels
+    pixels = image.reshape((-1, 3))
 
-    # Map each pixel to the closest color in the predefined set
+    # Apply K-means clustering
+    kmeans = KMeans(n_clusters=num_clusters)
+    kmeans.fit(pixels)
+    centroids = kmeans.cluster_centers_.astype(int)
+
+    return centroids
+
+
+def map_clusters_to_preset(centroids, preset_colors):
+    """
+    Map the centroids to the closest colors from the preset colors.
+
+    :param centroids: Centroids from K-means clustering.
+    :param preset_colors: Preset array of colors.
+    :return: Mapped colors.
+    """
+    mapped_colors = np.array(
+        [find_closest_color(centroid, preset_colors) for centroid in centroids]
+    )
+    return mapped_colors
+
+
+def replace_colors(image, centroids, mapped_colors):
+    """
+    Replace colors in the image based on the mapped colors.
+
+    :param image: Original image.
+    :param centroids: Centroids from K-means clustering.
+    :param mapped_colors: Colors mapped to the preset.
+    :return: Image with colors replaced.
+    """
+    new_image = np.zeros_like(image)
     for i in range(image.shape[0]):
         for j in range(image.shape[1]):
-            new_image[i, j] = find_closest_color(image[i, j], colors)
+            original_color = image[i, j]
+            closest_centroid = find_closest_color(original_color, centroids)
+            new_color = find_closest_color(closest_centroid, mapped_colors)
+            new_image[i, j] = new_color
 
     return new_image
 
 
-def k_means_color_reduction(image_path, colors):
+def color_reduction_with_kmeans(image_path, preset_colors, num_clusters=5):
     """
-    Reduces the number of colors in an image to the colors of a predefined palette.
+    Apply color reduction using K-means clustering and a preset color palette.
 
     :param image_path: Path to the image file.
-    :param colors: Array of RGB values of the predefined colors.
+    :param preset_colors: Preset array of colors.
+    :param num_clusters: Number of clusters for K-means.
     :return: Image with reduced color palette.
     """
-
     # Read the image
     image = cv2.imread(image_path)
     if image is None:
         raise ValueError("Could not read the image.")
 
-    # Apply fixed palette color reduction
-    reduced_image = apply_fixed_palette_color_reduction(image, colors)
+    # Apply K-means clustering
+    centroids = k_means_cluster_colors(image, num_clusters)
+
+    # Map centroids to preset colors
+    mapped_colors = map_clusters_to_preset(centroids, preset_colors)
+
+    # Replace colors in the image
+    reduced_image = replace_colors(image, centroids, mapped_colors)
 
     return reduced_image
 
@@ -67,6 +108,7 @@ def save_image(image, output_path):
 # Define your 12 preset colors (example RGB values)
 preset_colors = np.array(
     [
+        [0, 0, 0],  # Black
         [232, 238, 251],  # Grey
         [255, 0, 0],  # Red
         [0, 128, 0],  # Green (Darker Shade)
@@ -88,7 +130,7 @@ if __name__ == "__main__":
     output_image_path = "G-Code Generator/Assets/img_2_quantized.png"
 
     try:
-        processed_image = k_means_color_reduction(input_image_path, preset_colors)
+        processed_image = color_reduction_with_kmeans(input_image_path, preset_colors)
         save_image(processed_image, output_image_path)
         print("Image processed and saved successfully.")
     except Exception as e:
