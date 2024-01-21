@@ -1,0 +1,213 @@
+<!-- Frequency Band Power Input Node -->
+<script type="text/x-red" data-template-name="Frequency-Band-Power">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"> Label </span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-headset"><i class="fa fa-info"></i><span> Headset </span></label>
+    <select id="node-input-headset" onchange="handleChange()">
+      <option value="Insight" selected>Insight/Insight2</option>
+      <option value="EPOC">EPOC+/EPOCX</option>
+      <option value="MN8">MN8</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-freq"><i class="fa fa-area-chart"></i><span> Band </span></label>
+    <select id="node-input-freq">
+      <option value="0">Theta</option>
+      <option value="1">Alpha</option>
+      <option value="2">Beta-Low</option>
+      <option value="3">Beta-High</option>
+      <option value="4">Gamma</option>
+    </select>
+  </div>
+
+  <div id="sensors" class="form-row">
+    <label for="node-input-sensor"><i class="fa fa-info"></i><span> Sensor </span></label>
+    <select id="node-input-sensor"></select>
+  </div>
+
+  <script type="text/javascript">
+    var handleChange = function () {
+      var selectedHeadset = document.getElementById('node-input-headset').value;
+      var selectList = document.getElementById('node-input-sensor');
+      var InsightSensorList = ['All Sensors', 'AF3', 'T7', 'Pz', 'T8', 'AF4'];
+      var EpocSensorList = ['All Sensors', 'AF3', 'F7', 'F3', 'FC5', 'T7', 'P7', 'O1', 'O2', 'P8', 'T8', 'FC6', 'F4', 'F8', 'AF4'];
+      var MN8SensorList = ['All Sensors', 'T7', 'T8'];
+      var sensors = [];
+      selectList.innerHTML = '';
+    
+      if (selectedHeadset === "Insight") {
+        sensors = InsightSensorList;
+      } else if (selectedHeadset === "EPOC") {
+        sensors = EpocSensorList;
+      } else {
+        sensors = MN8SensorList;
+      }
+    
+      for (var i = 0; i < sensors.length; i++) {
+        var option = document.createElement('option');
+        option.value = i;
+        option.text = sensors[i];
+        selectList.appendChild(option);
+      }
+    }
+  </script>
+</script>
+
+<script type="text/x-red" data-help-name="Frequency-Band-Power">
+  <p>WebSocket input node.</p>
+  <p>This node returns the power of a selected Frequency Band in MicroVolt per root Hertz.</p>
+</script>
+
+<script type="text/javascript">
+  (function() {
+    function ws_oneditsave() {
+      return ws_label();
+    }
+    function ws_oneditresize() {
+      return ws_label();
+    }
+    function ws_label() {
+      var selectedMetric = '';
+      switch (this.freq) {
+        case '0':
+          selectedMetric = 'Theta';
+          break;
+        case '1':
+          selectedMetric = 'Alpha';
+          break;
+        case '2':
+          selectedMetric = 'Beta-Low';
+          break;
+        case '3':
+          selectedMetric = 'Beta-High';
+          break;
+        case '4':
+          selectedMetric = 'Gamma';
+          break;
+        default:
+          selectedMetric = 'Theta';
+          break;
+      }
+
+      var selectedSensor = '';
+      if (this.headset === "Insight") {
+        switch (this.sensor) {
+          case '0':
+            selectedSensor = 'All sensor';
+            break;
+          case '1':
+            selectedSensor = 'AF3';
+            break;
+          case '2':
+            selectedSensor = 'T7';
+            break;
+          case '3':
+            selectedSensor = 'Pz';
+            break;
+          case '4':
+            selectedSensor = 'T8';
+            break;
+          case '5':
+            selectedSensor = 'AF4';
+            break;
+          default:
+            selectedSensor = 'All sensor';
+            break;
+        }
+      } else if (this.headset === "EPOC") {
+        switch (this.sensor) {
+          case '0':
+            selectedSensor = 'All sensor';
+            break;
+          case '1':
+            selectedSensor = 'AF3';
+            break;
+          case '2':
+            selectedSensor = 'F7';
+            break;
+          case '3':
+            selectedSensor = 'F3';
+            break;
+          case '4':
+            selectedSensor = 'FC5';
+            break;
+          case '5':
+            selectedSensor = 'T7';
+            break;
+          case '6':
+            selectedSensor = 'P7';
+            break;
+          case '7':
+            selectedSensor = 'O1';
+            break;
+          case '8':
+            selectedSensor = 'O2';
+            break;
+          case '9':
+            selectedSensor = 'P8';
+            break;
+          case '10':
+            selectedSensor = 'T8';
+            break;
+          case '11':
+            selectedSensor = 'FC6';
+            break;
+          case '12':
+            selectedSensor = 'F4';
+            break;
+          case '13':
+            selectedSensor = 'F8';
+            break;
+          case '14':
+            selectedSensor = 'AF4';
+            break;
+          default:
+            selectedSensor = 'All sensor';
+            break;
+        } 
+      } else {
+          switch (this.sensor) {
+            case 0:
+              selectedSensor = 'All sensor';
+              break;
+            case '1':
+              selectedSensor = 'T7';
+              break;
+            case '2':
+              selectedSensor = 'T8';
+              break;
+            default:
+              selectedSensor = 'All sensor';
+              break;
+          }
+      }
+      return this.name + ': ' + selectedMetric + ' - ' + selectedSensor;
+    }
+
+    RED.nodes.registerType('Frequency-Band-Power', {
+      category: 'EmotivBCI',
+      paletteLabel: 'Frequency Band Powers',
+      defaults: {
+        name: { value: 'Frequency Band Powers' },
+        freq: { value: 0 },
+        headset: { value: "Insight" },
+        sensor: { value: 0}
+      },
+      color: '#EBA4C0',
+      inputs: 1,
+      outputs: 1,
+      icon: 'ic-band-power.png',
+      labelStyle: function() {
+        return this.name ? 'node_label_italic' : '';
+      },
+      label: ws_label,
+      oneditsave: ws_oneditsave,
+      oneditresize: ws_oneditresize
+    });
+  })();
+</script>

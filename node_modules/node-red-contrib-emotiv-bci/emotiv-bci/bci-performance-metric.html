@@ -1,0 +1,58 @@
+<!-- Performance Metric Input Node -->
+<script type="text/x-red" data-template-name="Performance-Metric">
+    <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"> Label </span></label>
+            <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+    </div>
+    <div class="form-row" id="pm-action-row">
+        <label for="node-input-pm"><i class="fa fa-bookmark"></i> <span>Action</span></label>
+        <select id="node-input-pm">
+            <option value="focus">Focus</option>
+            <option value="excitement">Excitement</option>
+            <option value="interest">Interest</option>
+            <option value="engagement">Engagement</option>
+            <option value="stress">Stress</option>
+            <option value="relaxation">Relaxation</option>
+            <option value="longTermExcitement">Long term excitement</option>
+            <option value="mn8-attention">MN8 Attention</option>
+            <option value="mn8-cognitivestress">MN8 Cognitive Stress</option>
+        </select>
+    </div>
+    
+</script>
+
+<script type="text/x-red" data-help-name="Performance-Metric">
+    <p>Mental Command input node.</p>
+    <p>This node returns score of selected Performance Metric within the range of 0 to 100. The output rate is 0.1 Hz</p>
+</script>
+
+<script type="text/javascript">
+  (function () {
+    function ws_oneditprepare() {
+    }
+    function ws_oneditsave() {
+      return ws_label();
+    }
+    function ws_label() {      
+      return this.name + ': ' + this.pm;
+    }
+    RED.nodes.registerType('Performance-Metric', {
+      category: 'EmotivBCI',
+      paletteLabel: 'Performance Metrics',
+      defaults: {
+        name: { value: "Performance Metrics" },
+        pm: { value: 'focus' }
+      },
+      color: "#EBA4C0",
+      inputs: 1,
+      outputs: 1,
+      icon: "ic-performance-metric.png",
+      labelStyle: function () {
+        return this.name ? "node_label_italic" : "";
+      },
+      label: ws_label,
+      oneditsave: ws_oneditsave,
+      oneditprepare: ws_oneditprepare
+    });
+  })();
+</script>

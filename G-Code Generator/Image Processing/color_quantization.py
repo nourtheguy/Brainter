@@ -69,7 +69,7 @@ def replace_colors(image, centroids, mapped_colors):
     return new_image
 
 
-def color_reduction_with_kmeans(image_path, preset_colors, num_clusters=5):
+def color_reduction_with_kmeans(image_path, preset_colors, num_clusters=100):
     """
     Apply color reduction using K-means clustering and a preset color palette.
 
@@ -126,8 +126,8 @@ preset_colors = np.array(
 
 # Example usage
 if __name__ == "__main__":
-    input_image_path = "G-Code Generator/Assets/img_2.png"
-    output_image_path = "G-Code Generator/Assets/img_2_quantized.png"
+    input_image_path = "G-Code Generator/Assets/img_4.png"
+    output_image_path = "G-Code Generator/Assets/img_3_quantized.png"
 
     try:
         processed_image = color_reduction_with_kmeans(input_image_path, preset_colors)
