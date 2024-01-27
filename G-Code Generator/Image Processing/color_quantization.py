@@ -148,8 +148,8 @@ preset_colors = np.array(
 
 # Example usage
 if __name__ == "__main__":
-    input_image_path = "G-Code Generator/Assets/img_4.png"
-    output_image_path = "G-Code Generator/Assets/img_4_quantized.png"
+    input_image_path = "G-Code Generator/Assets/test.png"
+    output_image_path = "G-Code Generator/Assets/test_quantized.png"
 
     try:
         start_time = time.time()  # Starting the timer
