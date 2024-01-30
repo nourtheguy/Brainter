@@ -4,7 +4,7 @@ import time
 from sklearn.cluster import KMeans
 
 
-def quantize_image_colors(
+def color_quantization(
     input_image_path,
     output_image_path,
     preset_colors,
@@ -104,7 +104,7 @@ if __name__ == "__main__":
 
     try:
         start_time = time.time()
-        quantize_image_colors(input_image_path, output_image_path, preset_colors)
+        color_quantization(input_image_path, output_image_path, preset_colors)
         end_time = time.time()
         print(
             f"Image processed and saved successfully. Time taken: {end_time - start_time:.2f} seconds."

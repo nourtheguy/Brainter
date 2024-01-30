@@ -3,28 +3,21 @@ import numpy as np
 import os
 
 
-def segment_color(image, color):
-    """
-    Create a mask for the given color in the image and generate a grayscale representation.
-
-    :param image: Input image.
-    :param color: RGB values of the color to segment.
-    :return: Grayscale image showing the presence of the given color.
-    """
-    mask = cv2.inRange(image, color, color)
-    grayscale = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
-    return cv2.bitwise_and(grayscale, grayscale, mask=mask)
-
-
-def color_segmentation(input_image_path, preset_colors, color_names, output_folder):
+def color_segmentation(input_image_path, output_folder, preset_colors, color_names):
     """
     Segment each color in the image and save grayscale representations.
 
     :param input_image_path: Path to the quantized image.
+    :param output_folder: Folder to save the output images.
     :param preset_colors: Preset array of colors.
     :param color_names: List of names corresponding to each color in the preset.
-    :param output_folder: Folder to save the output images.
     """
+
+    def segment_color(image, color):
+        mask = cv2.inRange(image, color, color)
+        grayscale = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+        return cv2.bitwise_and(grayscale, grayscale, mask=mask)
+
     # Read the image
     image = cv2.imread(input_image_path)
     if image is None:
@@ -82,11 +75,11 @@ color_names = [
 
 # Example usage
 if __name__ == "__main__":
-    input_image_path = "G-Code Generator/Assets/Quantized Images/img_1_quantized.png"
-    output_folder = "G-Code Generator/Assets/Segmented Images/img_1"
+    input_image_path = "G-Code Generator/Assets/Quantized Images/img_2_quantized.png"
+    output_folder = "G-Code Generator/Assets/Segmented Images/img_2"
 
     try:
-        color_segmentation(input_image_path, preset_colors, color_names, output_folder)
+        color_segmentation(input_image_path, output_folder, preset_colors, color_names)
         print("Color segmentation completed successfully.")
     except Exception as e:
         print("Error:", e)
