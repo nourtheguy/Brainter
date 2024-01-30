@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "node-red-contrib-emotiv-bci": "^2.1.5"
-  }
-}
