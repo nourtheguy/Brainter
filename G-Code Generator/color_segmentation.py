@@ -5,7 +5,7 @@ import os
 
 def color_segmentation(input_image_path, output_folder, preset_colors, color_names):
     """
-    Segment each color in the image and save grayscale representations.
+    Segment each color in the image and save grayscale representations only for colors present in the image.
 
     :param input_image_path: Path to the quantized image.
     :param output_folder: Folder to save the output images.
@@ -15,8 +15,11 @@ def color_segmentation(input_image_path, output_folder, preset_colors, color_nam
 
     def segment_color(image, color):
         mask = cv2.inRange(image, color, color)
-        grayscale = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
-        return cv2.bitwise_and(grayscale, grayscale, mask=mask)
+        if np.any(mask):  # Check if the color is present in the image
+            grayscale = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+            return cv2.bitwise_and(grayscale, grayscale, mask=mask)
+        else:
+            return None
 
     # Read the image
     image = cv2.imread(input_image_path)
@@ -30,11 +33,12 @@ def color_segmentation(input_image_path, output_folder, preset_colors, color_nam
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    # Process each color
+    # Process each color and save the file only if the color is present
     for color, name in zip(preset_colors, color_names):
         segmented_image = segment_color(image, color)
-        output_path = os.path.join(output_folder, f"{name}.png")
-        cv2.imwrite(output_path, segmented_image)
+        if segmented_image is not None:  # Only save if the color is present
+            output_path = os.path.join(output_folder, f"{name}.png")
+            cv2.imwrite(output_path, segmented_image)
 
 
 # Preset List of colors from color_quantization.py
@@ -75,8 +79,8 @@ color_names = [
 
 # Example usage
 if __name__ == "__main__":
-    input_image_path = "G-Code Generator/Assets/Quantized Images/img_2_quantized.png"
-    output_folder = "G-Code Generator/Assets/Segmented Images/img_2"
+    input_image_path = "G-Code Generator/Assets/Quantized Images/img_1_quantized.png"
+    output_folder = "G-Code Generator/Assets/Segmented Images/img_1"
 
     try:
         color_segmentation(input_image_path, output_folder, preset_colors, color_names)
