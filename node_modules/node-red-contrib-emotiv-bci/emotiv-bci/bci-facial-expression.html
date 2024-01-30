@@ -1,0 +1,87 @@
+<!-- Facial Expression Input Node -->
+<script type="text/x-red" data-template-name="Facial-Expression">
+
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"> Label </span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-action">Action</label>
+    <select id="node-input-action">
+      <option value="eye-neutral">Eye Neutral</option>
+      <option value="uf-neutral">Upper Face Neutral</option>
+      <option value="lf-neutral">Lower Face Neutral</option>
+      <option value="blink">Blink</option>
+      <option value="winkL">Wink Left</option>
+      <option value="winkR">Wink Right</option>
+      <option value="frown">Furrow Brows</option>
+      <option value="surprise">Raise Brows</option>
+      <option value="smile">Smile</option>
+      <option value="clench">Clench</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-input-sens">Threshold</label>
+    <input type="number" min="0" max="1000" id="node-input-sens">
+  </div>
+
+  <div class="form-row">
+      <p id="error-msg"></p>
+  </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="Facial-Expression">
+    <p>Facial Expression input node.</p>
+    <p>This node returns score of the selected Facial Expression.</p>
+    <p>Blink, Smirk Left, and Smirk Right return 1 if triggered.</p>
+    <p>Other actions return score within the range of 0 to 100.</p>
+</script>
+
+<script type="text/javascript">
+  (function () {
+    function ws_oneditprepare() {
+      var sen = $("#node-input-sens");
+      var errMsg = $("#error-msg");
+
+      sen.keyup(() => {
+        if (sen.val() < 0 || sen.val() > 1000) {
+          errMsg.text("Threshold must be in range 0 to 1000");
+          errMsg.css("color", "red");
+          sen.val(1000);
+        } else {
+          errMsg.text("");
+          errMsg.css("color", "black");
+        }
+      });
+    }
+
+    function ws_oneditsave() {
+      return ws_label();
+    }
+
+    function ws_label() {
+      return this.name + ': ' + this.action;
+    }
+    RED.nodes.registerType('Facial-Expression', {
+      category: 'EmotivBCI',
+      paletteLabel: 'Facial Expressions',
+      defaults: {
+        name: { value: 'Facial Expressions' },
+        action: { value: 'blink' },
+        sens: { value: 1000 }
+      },
+      color: "#EBA4C0",
+      inputs: 1,
+      outputs: 1,
+      icon: "ic-facial-expressions.png",
+      labelStyle: function () {
+        return this.name ? "node_label_italic" : "";
+      },
+      label: ws_label,
+      oneditprepare: ws_oneditprepare,
+      oneditsave: ws_oneditsave,
+    });
+  })();
+</script>
