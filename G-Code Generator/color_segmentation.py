@@ -17,6 +17,9 @@ def color_segmentation(input_image_path, output_folder, preset_colors, color_nam
         mask = cv2.inRange(image, color, color)
         if np.any(mask):  # Check if the color is present in the image
             grayscale = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+            # If the color is black, invert the grayscale image to make the mask visible
+            if np.all(color == [0, 0, 0]):
+                grayscale = 255 - grayscale  # Invert grayscale
             return cv2.bitwise_and(grayscale, grayscale, mask=mask)
         else:
             return None
@@ -79,8 +82,8 @@ color_names = [
 
 # Example usage
 if __name__ == "__main__":
-    input_image_path = "G-Code Generator/Assets/Quantized Images/img_1_quantized.png"
-    output_folder = "G-Code Generator/Assets/Segmented Images/img_1"
+    input_image_path = "G-Code Generator/Assets/Quantized Images/img_2_quantized.png"
+    output_folder = "G-Code Generator/Assets/Segmented Images/img_2"
 
     try:
         color_segmentation(input_image_path, output_folder, preset_colors, color_names)
