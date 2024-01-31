@@ -453,6 +453,33 @@
         "wires": []
     },
     {
+        "id": "fa8c7fbc3b7ff6af",
+        "type": "inject",
+        "z": "768c12641e962ecf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "d214f6d538b2166b",
         "type": "function",
         "z": "29841973756906a9",
