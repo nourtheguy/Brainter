@@ -1,0 +1,83 @@
+<!-- Motion Sensor Input Node -->
+<script type="text/x-red" data-template-name="Motion-Sensor">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"> Label </span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-metric"><i class="fa fa-asterisk"></i> <span> Sensor </span></label>
+    <select id="node-input-metric">
+      <option value="0">Quaternions 0 (new headset)</option>
+      <option value="1">Quaternions 1 (new headset)</option>
+      <option value="2">Quaternions 2 (new headset)</option>
+      <option value="3">Quaternions 3 (new headset)</option>
+      <option value="4">Acceleration, X axis</option>
+      <option value="5">Acceleration, Y axis</option>
+      <option value="6">Acceleration, Z axis</option>
+      <option value="7">Magnetometer, X axis</option>
+      <option value="8">Magnetometer, Y axis</option>
+      <option value="9">Magnetometer, Z axis</option>
+      <option value="10">Gyroscope, X axis (old headset)</option>
+      <option value="11">Gyroscope, Y axis (old headset)</option>
+      <option value="12">Gyroscope, Z axis (old headset)</option>
+    </select>
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="Motion-Sensor">
+  <p>WebSocket input node.</p>
+  <p>This node returns score of selected Motion Metric.</p>
+  <p>Note: Only Quaternions metrics are available on MN8 headset</p>
+</script>
+
+<script type="text/javascript">
+  (function () {
+    function ws_oneditsave() {
+      this.motion = $("#node-input-metric option:selected").text();
+      return ws_label();
+    }
+    function ws_oneditresize() {
+      return ws_label();
+    }
+    function ws_label() {
+      var motionName = "";
+      switch (this.metric) {
+        case "0": motionName = "Quaternions 0"; break;
+        case "1": motionName = "Quaternions 1"; break;
+        case "2": motionName = "Quaternions 2"; break;
+        case "3": motionName = "Quaternions 3"; break;
+        case "4": motionName = "Acceleration, X axis"; break;
+        case "5": motionName = "Acceleration, Y axis"; break;
+        case "6": motionName = "Acceleration, Z axis"; break;
+        case "7": motionName = "Magnetometer, X axis"; break;
+        case "8": motionName = "Magnetometer, Y axis"; break;
+        case "9": motionName = "Magnetometer, Z axis"; break;
+        case "10": motionName = "Gyroscope, X axis"; break;
+        case "11": motionName = "Gyroscope, Y axis"; break;
+        case "12": motionName = "Gyroscope, Z axis"; break;
+        default: motionName = "Gyroscope, X axis"; break;
+      }
+
+      return this.name + ': ' + motionName;
+    }
+    RED.nodes.registerType('Motion-Sensor', {
+      category: 'EmotivBCI',
+      paletteLabel: 'Motions Sensor',
+      defaults: {
+        name: { value: "Motion Sensor" },
+        metric: { value: 0 }
+      },
+      color: "#EBA4C0",
+      inputs: 1,
+      outputs: 1,
+      icon: "ic-motion.png",
+      labelStyle: function () {
+        return this.name ? "node_label_italic" : "";
+      },
+      label: ws_label,
+      oneditsave: ws_oneditsave,
+      oneditresize: ws_oneditresize
+    });
+  })();
+</script>

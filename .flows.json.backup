@@ -1,0 +1,1275 @@
+[
+    {
+        "id": "768c12641e962ecf",
+        "type": "tab",
+        "label": "OpenAI",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "29841973756906a9",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ee9757178de2cc83",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1d216a58cd19278d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f563bc474c51a0d2",
+        "type": "tab",
+        "label": "Facial With Led",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "752f0bc11d111e10",
+        "type": "tab",
+        "label": "Facial",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5043c7920a794772",
+        "type": "tab",
+        "label": "Mental Commands",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a1fe27bb3f369924",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "308f09ba75c30f2f",
+        "type": "ui_tab",
+        "name": "OpenAI",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "8b6ae23c272c8d51",
+        "type": "ui_group",
+        "name": "OpenAI Image generation",
+        "tab": "308f09ba75c30f2f",
+        "order": 2,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "fea83661.1ab498",
+        "type": "ui_group",
+        "name": "Testing",
+        "tab": "d7908651.24f9b8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d7908651.24f9b8",
+        "type": "ui_tab",
+        "name": "Tab 1",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "aeceb0c6a269ae6c",
+        "type": "function",
+        "z": "768c12641e962ecf",
+        "name": "function 1",
+        "func": "msg.url = \"https://api.openai.com/v1/images/generations\";\nmsg.method = \"POST\";\nvar prompt = msg.payload;\nvar n = 2;\nvar size = \"512x512\";\n\nmsg.payload = {\n    \"prompt\": prompt,\n    \"n\": n,\n    \"size\": size,\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 460,
+        "wires": [
+            [
+                "082a53931f915536"
+            ]
+        ]
+    },
+    {
+        "id": "1aab972edf569e91",
+        "type": "ui_text_input",
+        "z": "768c12641e962ecf",
+        "name": "Prompt",
+        "label": "Example: \"An impressionist oil painting of sunflowers in a purple vase\"",
+        "tooltip": "Enter a prompt!",
+        "group": "8b6ae23c272c8d51",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "str",
+        "x": 240,
+        "y": 400,
+        "wires": [
+            [
+                "695cbd80cb905d89"
+            ]
+        ]
+    },
+    {
+        "id": "a070c66e766f43aa",
+        "type": "ui_button",
+        "z": "768c12641e962ecf",
+        "name": "",
+        "group": "8b6ae23c272c8d51",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Generate",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "prompt",
+        "payloadType": "flow",
+        "topic": "",
+        "topicType": "str",
+        "x": 420,
+        "y": 460,
+        "wires": [
+            [
+                "aeceb0c6a269ae6c"
+            ]
+        ]
+    },
+    {
+        "id": "695cbd80cb905d89",
+        "type": "change",
+        "z": "768c12641e962ecf",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "prompt",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 240,
+        "y": 460,
+        "wires": [
+            [
+                "a070c66e766f43aa"
+            ]
+        ]
+    },
+    {
+        "id": "084139eda80cfd4e",
+        "type": "ui_template",
+        "z": "768c12641e962ecf",
+        "group": "8b6ae23c272c8d51",
+        "name": "",
+        "order": 3,
+        "width": "20",
+        "height": "12",
+        "format": "<div layout=\"row\" layout-align=\"space-between\">\n    \n    <img src=\"{{msg.payload.data[0].url}}\">\n    <img src=\"{{msg.payload.data[1].url}}\">\n\n  \n</div>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 900,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "082a53931f915536",
+        "type": "http request",
+        "z": "768c12641e962ecf",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 730,
+        "y": 460,
+        "wires": [
+            [
+                "084139eda80cfd4e",
+                "e4988ebae4d5c19f",
+                "909d03d5f1eb5571"
+            ]
+        ]
+    },
+    {
+        "id": "f86b66e4b976f049",
+        "type": "inject",
+        "z": "768c12641e962ecf",
+        "name": "Initial Reset",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 650,
+        "y": 380,
+        "wires": [
+            [
+                "084139eda80cfd4e"
+            ]
+        ]
+    },
+    {
+        "id": "4d1a5a011321e0d2",
+        "type": "inject",
+        "z": "768c12641e962ecf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 400,
+        "wires": [
+            [
+                "1aab972edf569e91"
+            ]
+        ]
+    },
+    {
+        "id": "e4988ebae4d5c19f",
+        "type": "change",
+        "z": "768c12641e962ecf",
+        "name": "Reset Prompt",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 340,
+        "wires": [
+            [
+                "1aab972edf569e91"
+            ]
+        ]
+    },
+    {
+        "id": "1f276a2a925d1b00",
+        "type": "comment",
+        "z": "768c12641e962ecf",
+        "name": "Image Generation",
+        "info": "",
+        "x": 110,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "909d03d5f1eb5571",
+        "type": "debug",
+        "z": "768c12641e962ecf",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "d214f6d538b2166b",
+        "type": "function",
+        "z": "29841973756906a9",
+        "name": "Yes - Threshold 60",
+        "func": "var spoken = context.get('spoken') || false;\nvar threshold = 60;\nvar outString = \"yes\";\nvar outMsg = {payload: \"\", text : outString};\n\nif (!spoken) {\n    if (msg.payload >= threshold) {\n        outMsg.payload = outString;\n        spoken = true;\n    }\n}\n\nif (msg.payload < threshold) {\n    spoken = false;\n    outMsg.text = \"\";\n}\n\nconsole.log(outMsg);\n\ncontext.set('spoken', spoken);\nreturn outMsg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 180,
+        "wires": [
+            [
+                "51a35680644f2964",
+                "3539d89447a02cd7"
+            ]
+        ]
+    },
+    {
+        "id": "feed898398c579c3",
+        "type": "function",
+        "z": "29841973756906a9",
+        "name": "No - Threshold 60",
+        "func": "var spoken = context.get('spoken') || false;\nvar threshold = 60;\nvar outString = \"no\";\nvar outMsg = {payload: \"\", text : outString};\n\nif (!spoken) {\n    if (msg.payload >= threshold) {\n        outMsg.payload = outString;\n        spoken = true;\n    }\n}\n\nif (msg.payload < threshold) {\n    spoken = false;\n    outMsg.text = \"\";\n}\n\ncontext.set('spoken', spoken);\nreturn outMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 750,
+        "y": 300,
+        "wires": [
+            [
+                "51a35680644f2964",
+                "3539d89447a02cd7"
+            ]
+        ]
+    },
+    {
+        "id": "51a35680644f2964",
+        "type": "ui_text",
+        "z": "29841973756906a9",
+        "group": "fea83661.1ab498",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Text Response",
+        "format": "{{msg.text}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 1020,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3539d89447a02cd7",
+        "type": "ui_audio",
+        "z": "29841973756906a9",
+        "name": "Voice Response",
+        "group": "fea83661.1ab498",
+        "voice": "en-US",
+        "always": "",
+        "x": 1020,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "cfdc83acc4fc8f92",
+        "type": "EMOTIV",
+        "z": "29841973756906a9",
+        "name": "EMOTIV",
+        "x": 60,
+        "y": 300,
+        "wires": [
+            [
+                "971fef7d3fcb2a2b"
+            ]
+        ]
+    },
+    {
+        "id": "971fef7d3fcb2a2b",
+        "type": "Profile-Name",
+        "z": "29841973756906a9",
+        "name": "Profile Name",
+        "profileName": "",
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "8ee33f26b2d2270b",
+                "72d8ac706498f550"
+            ]
+        ]
+    },
+    {
+        "id": "8ee33f26b2d2270b",
+        "type": "Mental-Command",
+        "z": "29841973756906a9",
+        "name": "Mental Commands",
+        "actionName": "push",
+        "mcSen": "10",
+        "x": 470,
+        "y": 180,
+        "wires": [
+            [
+                "d214f6d538b2166b"
+            ]
+        ]
+    },
+    {
+        "id": "72d8ac706498f550",
+        "type": "Mental-Command",
+        "z": "29841973756906a9",
+        "name": "Mental Commands",
+        "actionName": "pull",
+        "mcSen": "10",
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "feed898398c579c3"
+            ]
+        ]
+    },
+    {
+        "id": "f1f542807e71d6ca",
+        "type": "function",
+        "z": "ee9757178de2cc83",
+        "name": "Trigger Image Generation",
+        "func": "if (msg.payload === 'yes') {\n    return { payload: 'Your image generation prompt' };\n} else {\n    return null;\n}",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 360,
+        "wires": [
+            [
+                "9d46223732578699"
+            ]
+        ]
+    },
+    {
+        "id": "9d46223732578699",
+        "type": "function",
+        "z": "ee9757178de2cc83",
+        "name": "function 1",
+        "func": "msg.url = \"https://api.openai.com/v1/images/generations\";\nmsg.method = \"POST\";\nvar prompt = msg.payload;\nvar n = 2;\nvar size = \"512x512\";\n\nmsg.payload = {\n    \"prompt\": prompt,\n    \"n\": n,\n    \"size\": size,\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1200,
+        "y": 360,
+        "wires": [
+            [
+                "8dbb975bb7182e20"
+            ]
+        ]
+    },
+    {
+        "id": "bc2c4129377c7b2b",
+        "type": "ui_template",
+        "z": "ee9757178de2cc83",
+        "group": "8b6ae23c272c8d51",
+        "name": "",
+        "order": 3,
+        "width": "20",
+        "height": "12",
+        "format": "<div layout=\"row\" layout-align=\"space-between\">\n    \n    <img src=\"{{msg.payload.data[0].url}}\">\n    <img src=\"{{msg.payload.data[1].url}}\">\n\n  \n</div>\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1540,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8dbb975bb7182e20",
+        "type": "http request",
+        "z": "ee9757178de2cc83",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 1370,
+        "y": 360,
+        "wires": [
+            [
+                "bc2c4129377c7b2b",
+                "62b257977ea6ebed"
+            ]
+        ]
+    },
+    {
+        "id": "9a2802d7c46dc428",
+        "type": "inject",
+        "z": "ee9757178de2cc83",
+        "name": "Initial Reset",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 1290,
+        "y": 280,
+        "wires": [
+            [
+                "bc2c4129377c7b2b"
+            ]
+        ]
+    },
+    {
+        "id": "62b257977ea6ebed",
+        "type": "debug",
+        "z": "ee9757178de2cc83",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1530,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "fd3586c96f2c26c2",
+        "type": "EMOTIV",
+        "z": "ee9757178de2cc83",
+        "name": "EMOTIV",
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [
+                "2e48835dac3ff48f"
+            ]
+        ]
+    },
+    {
+        "id": "2e48835dac3ff48f",
+        "type": "Profile-Name",
+        "z": "ee9757178de2cc83",
+        "name": "Profile Name",
+        "profileName": "Charbel",
+        "x": 360,
+        "y": 360,
+        "wires": [
+            [
+                "919dfb9ef8244c15",
+                "c2fe43f5a6814f55"
+            ]
+        ]
+    },
+    {
+        "id": "de45441b395d991d",
+        "type": "function",
+        "z": "ee9757178de2cc83",
+        "name": "function 3",
+        "func": "// Define the threshold\nconst threshold = 20;\n\n// Check which command is received and if it passes the threshold, then output a string\nif (msg.topic === \"Mental Commands: left\" && msg.payload >= threshold) {\n  msg.payload = \"Left\";\n} else if (msg.topic === \"Mental Commands: right\" && msg.payload >= threshold) {\n  msg.payload = \"Right\";\n} else {\n  // If neither command passes the threshold, you can choose to output nothing\n  // or output a message indicating that the threshold was not passed.\n  // Uncomment the following line if you want to send a message in this case:\n  // msg.payload = \"No command passed the threshold.\";\n  return null; // This stops the flow and does not output a message.\n}\n\n// Return the message object\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 360,
+        "wires": [
+            [
+                "f1f542807e71d6ca"
+            ]
+        ]
+    },
+    {
+        "id": "919dfb9ef8244c15",
+        "type": "Mental-Command",
+        "z": "ee9757178de2cc83",
+        "name": "Mental Commands",
+        "actionName": "left",
+        "mcSen": 10,
+        "x": 570,
+        "y": 300,
+        "wires": [
+            [
+                "de45441b395d991d"
+            ]
+        ]
+    },
+    {
+        "id": "c2fe43f5a6814f55",
+        "type": "Mental-Command",
+        "z": "ee9757178de2cc83",
+        "name": "Mental Commands",
+        "actionName": "right",
+        "mcSen": 10,
+        "x": 570,
+        "y": 440,
+        "wires": [
+            [
+                "de45441b395d991d"
+            ]
+        ]
+    },
+    {
+        "id": "096e28471868594b",
+        "type": "ui_led",
+        "z": "1d216a58cd19278d",
+        "order": 2,
+        "group": "fea83661.1ab498",
+        "width": 0,
+        "height": 0,
+        "label": "Command Detected",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "Left",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "Right",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 1030,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "eb797dca93c9037b",
+        "type": "EMOTIV",
+        "z": "1d216a58cd19278d",
+        "name": "EMOTIV",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            [
+                "84cdc8b1572442b5"
+            ]
+        ]
+    },
+    {
+        "id": "84cdc8b1572442b5",
+        "type": "Profile-Name",
+        "z": "1d216a58cd19278d",
+        "name": "Profile Name",
+        "profileName": "Charbel",
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "b2316188d2a137d7",
+                "73cf004a746b63ca"
+            ]
+        ]
+    },
+    {
+        "id": "6f3bbb8a41e0e64d",
+        "type": "function",
+        "z": "1d216a58cd19278d",
+        "name": "function 4",
+        "func": "// Define the threshold\nconst threshold = 60;\n\n// Check which command is received and if it passes the threshold, then output a string\nif (msg.topic === \"Mental Commands: left\" && msg.payload >= threshold) {\n  msg.payload = \"Left\";\n} else if (msg.topic === \"Mental Commands: right\" && msg.payload >= threshold) {\n  msg.payload = \"Right\";\n} else {\n  // If neither command passes the threshold, you can choose to output nothing\n  // or output a message indicating that the threshold was not passed.\n  // Uncomment the following line if you want to send a message in this case:\n  // msg.payload = \"No command passed the threshold.\";\n  return null; // This stops the flow and does not output a message.\n}\n\n// Return the message object\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 180,
+        "wires": [
+            [
+                "096e28471868594b",
+                "68fa91562675fb1a"
+            ]
+        ]
+    },
+    {
+        "id": "b2316188d2a137d7",
+        "type": "Mental-Command",
+        "z": "1d216a58cd19278d",
+        "name": "Mental Commands",
+        "actionName": "left",
+        "mcSen": 10,
+        "x": 530,
+        "y": 120,
+        "wires": [
+            [
+                "6f3bbb8a41e0e64d"
+            ]
+        ]
+    },
+    {
+        "id": "73cf004a746b63ca",
+        "type": "Mental-Command",
+        "z": "1d216a58cd19278d",
+        "name": "Mental Commands",
+        "actionName": "right",
+        "mcSen": 10,
+        "x": 530,
+        "y": 260,
+        "wires": [
+            [
+                "6f3bbb8a41e0e64d"
+            ]
+        ]
+    },
+    {
+        "id": "68fa91562675fb1a",
+        "type": "function",
+        "z": "1d216a58cd19278d",
+        "name": "function 5",
+        "func": "   if (msg.payload === 'Left') {\n        return { payload: ' Draw me an image of a' + msg.payload + ' make it abstract using the following colors' };\n    } else if (msg.payload === 'Right') {\n        return { payload: msg.payload + ' charbel' };\n    } else {\n        return null;\n    }\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8ee1f454053624cc",
+        "type": "ui_led",
+        "z": "f563bc474c51a0d2",
+        "order": 2,
+        "group": "fea83661.1ab498",
+        "width": 0,
+        "height": 0,
+        "label": "Smile Detected",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "Smile",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 1130,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "90e3e63d7b1b9854",
+        "type": "Facial-Expression",
+        "z": "f563bc474c51a0d2",
+        "name": "Facial Expressions",
+        "action": "smile",
+        "sens": "100",
+        "x": 670,
+        "y": 120,
+        "wires": [
+            [
+                "6e57b26133eb6e14",
+                "67cd450fc91bd7ed"
+            ]
+        ]
+    },
+    {
+        "id": "6e57b26133eb6e14",
+        "type": "switch",
+        "z": "f563bc474c51a0d2",
+        "name": "Threshold 50",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "30",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 910,
+        "y": 120,
+        "wires": [
+            [
+                "b82b9998e776de0f"
+            ]
+        ]
+    },
+    {
+        "id": "50444ec2d9b8e1c4",
+        "type": "EMOTIV",
+        "z": "f563bc474c51a0d2",
+        "name": "EMOTIV",
+        "x": 140,
+        "y": 120,
+        "wires": [
+            [
+                "d976baf42633d0c5"
+            ]
+        ]
+    },
+    {
+        "id": "d976baf42633d0c5",
+        "type": "Profile-Name",
+        "z": "f563bc474c51a0d2",
+        "name": "Profile Name",
+        "profileName": "Charbel",
+        "x": 380,
+        "y": 120,
+        "wires": [
+            [
+                "90e3e63d7b1b9854"
+            ]
+        ]
+    },
+    {
+        "id": "b82b9998e776de0f",
+        "type": "debug",
+        "z": "f563bc474c51a0d2",
+        "name": "Smile",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "67cd450fc91bd7ed",
+        "type": "function",
+        "z": "f563bc474c51a0d2",
+        "name": "function 6",
+        "func": "if ( msg.payload >= 90) {\n  msg.payload = \"Smile\";\n}\nreturn msg\n// Return the message object",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 180,
+        "wires": [
+            [
+                "8ee1f454053624cc"
+            ]
+        ]
+    },
+    {
+        "id": "4ff2292be0cb031e",
+        "type": "Facial-Expression",
+        "z": "752f0bc11d111e10",
+        "name": "Facial Expressions",
+        "action": "smile",
+        "sens": "100",
+        "x": 590,
+        "y": 420,
+        "wires": [
+            [
+                "95224b17490fc385"
+            ]
+        ]
+    },
+    {
+        "id": "95224b17490fc385",
+        "type": "switch",
+        "z": "752f0bc11d111e10",
+        "name": "Threshold 50",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "30",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 870,
+        "y": 420,
+        "wires": [
+            [
+                "dbace96fd313e00b"
+            ]
+        ]
+    },
+    {
+        "id": "dbace96fd313e00b",
+        "type": "debug",
+        "z": "752f0bc11d111e10",
+        "name": "Smile",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "a2ea54378ddeca48",
+        "type": "EMOTIV",
+        "z": "752f0bc11d111e10",
+        "name": "EMOTIV",
+        "x": 60,
+        "y": 420,
+        "wires": [
+            [
+                "71d08c70930ab861"
+            ]
+        ]
+    },
+    {
+        "id": "71d08c70930ab861",
+        "type": "Profile-Name",
+        "z": "752f0bc11d111e10",
+        "name": "Profile Name",
+        "profileName": "Charbel",
+        "x": 300,
+        "y": 420,
+        "wires": [
+            [
+                "4ff2292be0cb031e"
+            ]
+        ]
+    },
+    {
+        "id": "337378d7.7c7328",
+        "type": "EMOTIV",
+        "z": "5043c7920a794772",
+        "name": "EMOTIV",
+        "x": 180,
+        "y": 160,
+        "wires": [
+            [
+                "13b9e855.55e2b8"
+            ]
+        ]
+    },
+    {
+        "id": "13b9e855.55e2b8",
+        "type": "Profile-Name",
+        "z": "5043c7920a794772",
+        "name": "Profile Name",
+        "profileName": "Charbel",
+        "x": 240,
+        "y": 220,
+        "wires": [
+            [
+                "3de480bf.41b19",
+                "98aa2d1e.0320c"
+            ]
+        ]
+    },
+    {
+        "id": "3de480bf.41b19",
+        "type": "Mental-Command",
+        "z": "5043c7920a794772",
+        "name": "Mental Commands",
+        "actionName": "left",
+        "mcSen": "10",
+        "x": 490,
+        "y": 160,
+        "wires": [
+            [
+                "29334321.88b60c"
+            ]
+        ]
+    },
+    {
+        "id": "98aa2d1e.0320c",
+        "type": "Mental-Command",
+        "z": "5043c7920a794772",
+        "name": "Mental Commands",
+        "actionName": "right",
+        "mcSen": "10",
+        "x": 490,
+        "y": 300,
+        "wires": [
+            [
+                "7c2aa7c.b960158"
+            ]
+        ]
+    },
+    {
+        "id": "338358d05c8c7ea7",
+        "type": "debug",
+        "z": "5043c7920a794772",
+        "name": "Left",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "7c2aa7c.b960158",
+        "type": "switch",
+        "z": "5043c7920a794772",
+        "name": "Threshold 50",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "50",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 300,
+        "wires": [
+            [
+                "8d840c5d93077962"
+            ]
+        ]
+    },
+    {
+        "id": "8d840c5d93077962",
+        "type": "debug",
+        "z": "5043c7920a794772",
+        "name": "Right",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "29334321.88b60c",
+        "type": "switch",
+        "z": "5043c7920a794772",
+        "name": "Threshold 50",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "50",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 160,
+        "wires": [
+            [
+                "338358d05c8c7ea7"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,89 @@
+<!-- Mental Command Input Node -->
+<script type="text/x-red" data-template-name="Mental-Command">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"> Label </span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+    </div>
+
+
+    <div class="form-row" id="mc-action-row">
+        <label for="node-input-actionName"><i class="fa fa-bolt"></i> <span> Command </span></label>
+        <select id="node-input-actionName">
+            <option value="neutral" selected>Neutral</option>
+            <option value="push">Push</option>
+            <option value="pull">Pull</option>
+            <option value="lift">Lift</option>
+            <option value="drop">Drop</option>
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+            <option value="rotateRight">Rotate Right</option>
+            <option value="rotateLeft">Rotate Left</option>
+            <option value="rotateCounterClockwise">Counter Clockwise</option>
+            <option value="rotateClockwise">Clockwise</option>
+            <option value="rotateReverse">Rotate Reverse</option>
+            <option value="rotateForwards">Rotate Forwards</option>
+            <option value="disappear">Disappear</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-mc-sensitivity"><i class="fa fa-sliders"></i> <span> Sensitivity </span></label>
+        <input type="number" min="1" max="10" id="node-input-mcSen">
+    </div>
+
+    <div class="form-row">
+        <p id="error-msg"></p>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Mental-Command">
+    <p>Mental Command input node.</p>
+    <p>This node returns score of selected Mental Command within the range of 0 to 100. This node requires Profile Name with a valid training profile to work.</p>
+</script>
+
+<script type="text/javascript">
+  (function () {
+    function ws_oneditprepare() {
+      var sen = $("#node-input-mcSen");
+      var errMsg = $("#error-msg");
+
+      sen.keyup(() => {
+        if (sen.val() < 1 || sen.val() > 10) {
+          errMsg.text("Sensitive must be in range 1 to 10");
+          errMsg.css("color", "red");
+          sen.val(10);
+        } else {
+          errMsg.text("");
+          errMsg.css("color", "black");
+        }
+      });
+    }
+
+    function ws_oneditsave() {
+      return ws_label();
+    }
+
+    function ws_label() {
+      return this.name + ': ' + this.actionName;
+    }
+    RED.nodes.registerType('Mental-Command', {
+      category: 'EmotivBCI',
+      paletteLabel: 'Mental Commands',
+      defaults: {
+        name: { value: "Mental Commands" },
+        actionName: { value: 'neutral' },
+        mcSen: { value: 10 }
+      },
+      color: "#EBA4C0",
+      inputs: 1,
+      outputs: 1,
+      icon: "ic-mental-commands.png",
+      labelStyle: function () {
+        return this.name ? "node_label_italic" : "";
+      },
+      label: ws_label,
+      oneditprepare: ws_oneditprepare,
+      oneditsave: ws_oneditsave,
+    });
+  })();
+</script>
