@@ -20,7 +20,10 @@ def color_segmentation(input_image_path, output_folder, preset_colors, color_nam
             # If the color is black, invert the grayscale image to make the mask visible
             if np.all(color == [0, 0, 0]):
                 grayscale = 255 - grayscale  # Invert grayscale
-            return cv2.bitwise_and(grayscale, grayscale, mask=mask)
+            # Apply a binary threshold to get a black and white image
+            # Set the threshold as 1 to make pixels strictly white or black
+            _, binary = cv2.threshold(grayscale, 1, 255, cv2.THRESH_BINARY)
+            return cv2.bitwise_and(binary, binary, mask=mask)
         else:
             return None
 
