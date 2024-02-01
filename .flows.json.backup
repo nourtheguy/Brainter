@@ -2,15 +2,7 @@
     {
         "id": "ee9757178de2cc83",
         "type": "tab",
-        "label": "Flow 4",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "1d216a58cd19278d",
-        "type": "tab",
-        "label": "Flow 1",
+        "label": "Mental Commands",
         "disabled": false,
         "info": "",
         "env": []
@@ -24,25 +16,9 @@
         "env": []
     },
     {
-        "id": "752f0bc11d111e10",
-        "type": "tab",
-        "label": "Facial",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "5043c7920a794772",
         "type": "tab",
         "label": "Mental Commands",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "f513e8b74af283e0",
-        "type": "tab",
-        "label": "Flow 2",
         "disabled": false,
         "info": "",
         "env": []
@@ -212,10 +188,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 990,
-        "y": 360,
+        "x": 1450,
+        "y": 340,
         "wires": [
-            []
+            [
+                "c99ee12a6cc850f0"
+            ]
         ]
     },
     {
@@ -251,15 +229,15 @@
         "type": "function",
         "z": "ee9757178de2cc83",
         "name": "function 3",
-        "func": "// Define the threshold\nconst threshold = 30;\n\n// Retrieve the 'commandTriggered' flag from the context, defaulting to false if not set\nlet commandTriggered = context.get('commandTriggered') || false;\n\n// Check if a command has already been triggered\nif (commandTriggered) {\n  // If a command was already triggered, do nothing and return null to stop the flow\n  return null;\n}\n\n// Check which command is received and if it passes the threshold\nif (msg.topic === \"Mental Commands: left\" && msg.payload >= threshold) {\n  msg.payload = \"Left\";\n  // Set the 'commandTriggered' flag to true to prevent further triggers\n  context.set('commandTriggered', true);\n} else if (msg.topic === \"Mental Commands: right\" && msg.payload >= threshold) {\n  msg.payload = \"Right\";\n  // Set the 'commandTriggered' flag to true to prevent further triggers\n  context.set('commandTriggered', true);\n} else {\n  // If neither command passes the threshold, do nothing and return null\n  return null;\n}\n\n// Return the message object to continue the flow\nreturn msg;\n",
+        "func": "\n\n// Retrieve the 'commandTriggered' flag from the context, defaulting to false if not set\nlet commandTriggered = context.get('commandTriggered') || false;\n\n// Check if a command has already been triggered\nif (commandTriggered) {\n  // If a command was already triggered, do nothing and return null to stop the flow\n  return null;\n}\n\n// Check which command is received and if it passes the threshold\nif (msg.payload === \"Left\") {\n  msg.payload = \"Left\";\n  // Set the 'commandTriggered' flag to true to prevent further triggers\n  context.set('commandTriggered', true);\n} else if (msg.payload === \"Right\" ) {\n  msg.payload = \"Right\";\n  // Set the 'commandTriggered' flag to true to prevent further triggers\n  context.set('commandTriggered', true);\n} else {\n  // If neither command passes the threshold, do nothing and return null\n  return null;\n}\n\n// Return the message object to continue the flow\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 780,
-        "y": 360,
+        "x": 1240,
+        "y": 340,
         "wires": [
             [
                 "f1f542807e71d6ca",
@@ -278,7 +256,7 @@
         "y": 300,
         "wires": [
             [
-                "de45441b395d991d"
+                "8efe1e4d6744837e"
             ]
         ]
     },
@@ -293,7 +271,7 @@
         "y": 440,
         "wires": [
             [
-                "de45441b395d991d"
+                "a63ffa71846c76f3"
             ]
         ]
     },
@@ -302,14 +280,14 @@
         "type": "file",
         "z": "ee9757178de2cc83",
         "name": "Brainter",
-        "filename": "C:\\Users\\charb\\Documents\\GitHub\\Brainter\\Mental Command\\mentalcommand.txt",
+        "filename": "C:\\Users\\charb\\Documents\\GitHub\\Brainter\\Image Generator\\mentalcommand.txt",
         "filenameType": "str",
         "appendNewline": true,
         "createDir": true,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 1240,
-        "y": 580,
+        "x": 1700,
+        "y": 340,
         "wires": [
             []
         ]
@@ -323,167 +301,121 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 980,
-        "y": 220,
+        "x": 1440,
+        "y": 200,
         "wires": []
     },
     {
-        "id": "bd79e0a61547ef5e",
-        "type": "inject",
+        "id": "8efe1e4d6744837e",
+        "type": "switch",
         "z": "ee9757178de2cc83",
-        "name": "",
-        "props": [
+        "name": "Threshold 50",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
             {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
+                "t": "gt",
+                "v": "90",
+                "vt": "num"
             }
         ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "left",
-        "payloadType": "str",
-        "x": 1050,
-        "y": 580,
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 830,
+        "y": 300,
         "wires": [
             [
-                "c99ee12a6cc850f0"
+                "bac8be6352a4ed2c"
             ]
         ]
     },
     {
-        "id": "096e28471868594b",
-        "type": "ui_led",
-        "z": "1d216a58cd19278d",
-        "order": 2,
-        "group": "fea83661.1ab498",
-        "width": 0,
-        "height": 0,
-        "label": "Command Detected",
-        "colorForValue": [
+        "id": "a63ffa71846c76f3",
+        "type": "switch",
+        "z": "ee9757178de2cc83",
+        "name": "Threshold 50",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
             {
-                "color": "#ff0000",
-                "value": "Left",
-                "valueType": "str"
-            },
-            {
-                "color": "#008000",
-                "value": "Right",
-                "valueType": "str"
+                "t": "gt",
+                "v": "70",
+                "vt": "num"
             }
         ],
-        "allowColorForValueInMessage": false,
-        "shape": "circle",
-        "showGlow": true,
-        "name": "",
-        "x": 1030,
-        "y": 120,
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 830,
+        "y": 440,
+        "wires": [
+            [
+                "f962ac8fc85ee126",
+                "17976bb15301df31"
+            ]
+        ]
+    },
+    {
+        "id": "bac8be6352a4ed2c",
+        "type": "function",
+        "z": "ee9757178de2cc83",
+        "name": "function 7",
+        "func": "if (msg.payload > 90) {\n    msg.payload = \"Left\";\n    // Set the 'commandTriggered' flag to true to prevent further triggers\n\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 300,
+        "wires": [
+            [
+                "de45441b395d991d"
+            ]
+        ]
+    },
+    {
+        "id": "f962ac8fc85ee126",
+        "type": "function",
+        "z": "ee9757178de2cc83",
+        "name": "function 8",
+        "func": "if (msg.payload > 70) {\n    msg.payload = \"Right\";\n    // Set the 'commandTriggered' flag to true to prevent further triggers\n\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 440,
+        "wires": [
+            [
+                "de45441b395d991d"
+            ]
+        ]
+    },
+    {
+        "id": "17976bb15301df31",
+        "type": "debug",
+        "z": "ee9757178de2cc83",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 600,
         "wires": []
-    },
-    {
-        "id": "eb797dca93c9037b",
-        "type": "EMOTIV",
-        "z": "1d216a58cd19278d",
-        "name": "EMOTIV",
-        "x": 120,
-        "y": 240,
-        "wires": [
-            [
-                "84cdc8b1572442b5"
-            ]
-        ]
-    },
-    {
-        "id": "84cdc8b1572442b5",
-        "type": "Profile-Name",
-        "z": "1d216a58cd19278d",
-        "name": "Profile Name",
-        "profileName": "Charbel",
-        "x": 320,
-        "y": 180,
-        "wires": [
-            [
-                "b2316188d2a137d7",
-                "73cf004a746b63ca"
-            ]
-        ]
-    },
-    {
-        "id": "6f3bbb8a41e0e64d",
-        "type": "function",
-        "z": "1d216a58cd19278d",
-        "name": "function 4",
-        "func": "// Define the threshold\nconst threshold = 60;\n\n// Check which command is received and if it passes the threshold, then output a string\nif (msg.topic === \"Mental Commands: left\" && msg.payload >= threshold) {\n  msg.payload = \"Left\";\n} else if (msg.topic === \"Mental Commands: right\" && msg.payload >= threshold) {\n  msg.payload = \"Right\";\n} else {\n  // If neither command passes the threshold, you can choose to output nothing\n  // or output a message indicating that the threshold was not passed.\n  // Uncomment the following line if you want to send a message in this case:\n  // msg.payload = \"No command passed the threshold.\";\n  return null; // This stops the flow and does not output a message.\n}\n\n// Return the message object\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 780,
-        "y": 180,
-        "wires": [
-            [
-                "096e28471868594b",
-                "68fa91562675fb1a"
-            ]
-        ]
-    },
-    {
-        "id": "b2316188d2a137d7",
-        "type": "Mental-Command",
-        "z": "1d216a58cd19278d",
-        "name": "Mental Commands",
-        "actionName": "left",
-        "mcSen": 10,
-        "x": 530,
-        "y": 120,
-        "wires": [
-            [
-                "6f3bbb8a41e0e64d"
-            ]
-        ]
-    },
-    {
-        "id": "73cf004a746b63ca",
-        "type": "Mental-Command",
-        "z": "1d216a58cd19278d",
-        "name": "Mental Commands",
-        "actionName": "right",
-        "mcSen": 10,
-        "x": 530,
-        "y": 260,
-        "wires": [
-            [
-                "6f3bbb8a41e0e64d"
-            ]
-        ]
-    },
-    {
-        "id": "68fa91562675fb1a",
-        "type": "function",
-        "z": "1d216a58cd19278d",
-        "name": "function 5",
-        "func": "   if (msg.payload === 'Left') {\n        return { payload: ' Draw me an image of a' + msg.payload + ' make it abstract using the following colors' };\n    } else if (msg.payload === 'Right') {\n        return { payload: msg.payload + ' charbel' };\n    } else {\n        return null;\n    }\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 980,
-        "y": 180,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "8ee1f454053624cc",
@@ -592,71 +524,6 @@
         "wires": [
             [
                 "8ee1f454053624cc"
-            ]
-        ]
-    },
-    {
-        "id": "4ff2292be0cb031e",
-        "type": "Facial-Expression",
-        "z": "752f0bc11d111e10",
-        "name": "Facial Expressions",
-        "action": "smile",
-        "sens": "100",
-        "x": 590,
-        "y": 420,
-        "wires": [
-            [
-                "95224b17490fc385"
-            ]
-        ]
-    },
-    {
-        "id": "95224b17490fc385",
-        "type": "switch",
-        "z": "752f0bc11d111e10",
-        "name": "Threshold 50",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "gt",
-                "v": "30",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 870,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a2ea54378ddeca48",
-        "type": "EMOTIV",
-        "z": "752f0bc11d111e10",
-        "name": "EMOTIV",
-        "x": 60,
-        "y": 420,
-        "wires": [
-            [
-                "71d08c70930ab861"
-            ]
-        ]
-    },
-    {
-        "id": "71d08c70930ab861",
-        "type": "Profile-Name",
-        "z": "752f0bc11d111e10",
-        "name": "Profile Name",
-        "profileName": "Charbel",
-        "x": 300,
-        "y": 420,
-        "wires": [
-            [
-                "4ff2292be0cb031e"
             ]
         ]
     },
@@ -801,362 +668,5 @@
                 "338358d05c8c7ea7"
             ]
         ]
-    },
-    {
-        "id": "b2a1d6df686b97ee",
-        "type": "function",
-        "z": "f513e8b74af283e0",
-        "name": "function 1",
-        "func": "msg.url = \"https://api.openai.com/v1/images/generations\";\nmsg.method = \"POST\";\nvar prompt = msg.payload;\nvar n = 1;\nvar size = \"512x512\";\n\nmsg.payload = {\n    \"prompt\": prompt,\n    \"n\": n,\n    \"size\": size,\n};\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 400,
-        "wires": [
-            [
-                "f67eba5b1481f856"
-            ]
-        ]
-    },
-    {
-        "id": "60722579ebd8742c",
-        "type": "ui_text_input",
-        "z": "f513e8b74af283e0",
-        "name": "Prompt",
-        "label": "Example: \"An impressionist oil painting of sunflowers in a purple vase\"",
-        "tooltip": "Enter a prompt!",
-        "group": "8b6ae23c272c8d51",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "str",
-        "x": 280,
-        "y": 340,
-        "wires": [
-            [
-                "554681c1a56720f1"
-            ]
-        ]
-    },
-    {
-        "id": "fd05fc0c96ca0d89",
-        "type": "ui_button",
-        "z": "f513e8b74af283e0",
-        "name": "",
-        "group": "8b6ae23c272c8d51",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Generate",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "prompt",
-        "payloadType": "flow",
-        "topic": "",
-        "topicType": "str",
-        "x": 460,
-        "y": 400,
-        "wires": [
-            [
-                "b2a1d6df686b97ee"
-            ]
-        ]
-    },
-    {
-        "id": "554681c1a56720f1",
-        "type": "change",
-        "z": "f513e8b74af283e0",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "prompt",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 280,
-        "y": 400,
-        "wires": [
-            [
-                "fd05fc0c96ca0d89"
-            ]
-        ]
-    },
-    {
-        "id": "289be044a17f4ebc",
-        "type": "ui_template",
-        "z": "f513e8b74af283e0",
-        "group": "8b6ae23c272c8d51",
-        "name": "",
-        "order": 3,
-        "width": "20",
-        "height": "12",
-        "format": "<div layout=\"row\" layout-align=\"space-between\">\n    \n    <img src=\"{{msg.payload.data[0].url}}\">\n\n</div>\n\n",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 1220,
-        "y": 400,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f67eba5b1481f856",
-        "type": "http request",
-        "z": "f513e8b74af283e0",
-        "name": "",
-        "method": "use",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "bearer",
-        "senderr": false,
-        "headers": [],
-        "x": 770,
-        "y": 400,
-        "wires": [
-            [
-                "289be044a17f4ebc",
-                "336518bb02a0d744",
-                "a873042b992af2d5",
-                "4edf8d39dc37b1fb"
-            ]
-        ]
-    },
-    {
-        "id": "5303a377d15f2a38",
-        "type": "inject",
-        "z": "f513e8b74af283e0",
-        "name": "Initial Reset",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "1",
-        "topic": "",
-        "payload": "",
-        "payloadType": "str",
-        "x": 850,
-        "y": 120,
-        "wires": [
-            [
-                "289be044a17f4ebc"
-            ]
-        ]
-    },
-    {
-        "id": "037f21b70d24ef61",
-        "type": "inject",
-        "z": "f513e8b74af283e0",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "1",
-        "topic": "",
-        "payload": "",
-        "payloadType": "str",
-        "x": 130,
-        "y": 340,
-        "wires": [
-            [
-                "60722579ebd8742c"
-            ]
-        ]
-    },
-    {
-        "id": "336518bb02a0d744",
-        "type": "change",
-        "z": "f513e8b74af283e0",
-        "name": "Reset Prompt",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 480,
-        "y": 280,
-        "wires": [
-            [
-                "60722579ebd8742c"
-            ]
-        ]
-    },
-    {
-        "id": "ea08acbe1b9e449a",
-        "type": "comment",
-        "z": "f513e8b74af283e0",
-        "name": "Image Generation",
-        "info": "",
-        "x": 150,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "9bbc826b0d2a064a",
-        "type": "file",
-        "z": "f513e8b74af283e0",
-        "name": "Brainter",
-        "filename": "C:\\Users\\charb\\Documents\\GitHub\\Brainter\\G-Code Generator\\Assets\\Images\\brainter.jpg",
-        "filenameType": "str",
-        "appendNewline": true,
-        "createDir": true,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 1440,
-        "y": 520,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a873042b992af2d5",
-        "type": "function",
-        "z": "f513e8b74af283e0",
-        "name": "function 7",
-        "func": "// Check if the data array exists and has at least one element\nif (msg.payload.data && msg.payload.data.length > 0) {\n    // Extract the image URL\n    var imageUrl = msg.payload.data[0].url;\n    // Prepare the next HTTP request\n    msg.url = imageUrl;\n    // Set the headers if necessary, e.g., for bearer authentication\n    msg.headers = {\n        'Authorization': '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'\n    };\n    return msg;\n} else {\n    // If the data array is not present or empty, log an error\n    node.error(\"No image URL found in payload\", msg);\n    return null; // Stop the flow as we don't have a valid URL to process\n}\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1000,
-        "y": 460,
-        "wires": [
-            [
-                "98d175044757cf81",
-                "628645b322745568"
-            ]
-        ]
-    },
-    {
-        "id": "98d175044757cf81",
-        "type": "http request",
-        "z": "f513e8b74af283e0",
-        "name": "",
-        "method": "GET",
-        "ret": "bin",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "bearer",
-        "senderr": false,
-        "headers": [],
-        "x": 1210,
-        "y": 520,
-        "wires": [
-            [
-                "9bbc826b0d2a064a",
-                "25701f59d2639f29"
-            ]
-        ]
-    },
-    {
-        "id": "4edf8d39dc37b1fb",
-        "type": "debug",
-        "z": "f513e8b74af283e0",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 940,
-        "y": 720,
-        "wires": []
-    },
-    {
-        "id": "628645b322745568",
-        "type": "debug",
-        "z": "f513e8b74af283e0",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1500,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "25701f59d2639f29",
-        "type": "debug",
-        "z": "f513e8b74af283e0",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1480,
-        "y": 620,
-        "wires": []
     }
 ]
