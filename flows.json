@@ -8,6 +8,14 @@
         "env": []
     },
     {
+        "id": "41996be6d96fa283",
+        "type": "tab",
+        "label": "Emotion Finder",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "a1fe27bb3f369924",
         "type": "ui_base",
         "theme": {
@@ -114,28 +122,6 @@
         "hidden": false
     },
     {
-        "id": "8b6ae23c272c8d51",
-        "type": "ui_group",
-        "name": "Brainter",
-        "tab": "308f09ba75c30f2f",
-        "order": 2,
-        "disp": true,
-        "width": "20",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "fea83661.1ab498",
-        "type": "ui_group",
-        "name": "Testing",
-        "tab": "d7908651.24f9b8",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "d7908651.24f9b8",
         "type": "ui_tab",
         "name": "Tab 1",
@@ -148,17 +134,6 @@
         "id": "3085cb252d0df0c1",
         "type": "openaiApiKey",
         "name": "Personal"
-    },
-    {
-        "id": "2052509108456867",
-        "type": "ui_group",
-        "name": "OpenAI Text completion",
-        "tab": "308f09ba75c30f2f",
-        "order": 1,
-        "disp": true,
-        "width": "20",
-        "collapse": false,
-        "className": ""
     },
     {
         "id": "f1f542807e71d6ca",
@@ -400,5 +375,220 @@
         "x": 1060,
         "y": 600,
         "wires": []
+    },
+    {
+        "id": "5707331f2b6bb153",
+        "type": "EMOTIV",
+        "z": "41996be6d96fa283",
+        "name": "EMOTIV",
+        "x": 160,
+        "y": 380,
+        "wires": [
+            [
+                "1ce3629a6c9015ed"
+            ]
+        ]
+    },
+    {
+        "id": "1ce3629a6c9015ed",
+        "type": "Profile-Name",
+        "z": "41996be6d96fa283",
+        "name": "Profile Name",
+        "profileName": "Charbel",
+        "x": 340,
+        "y": 320,
+        "wires": [
+            [
+                "2996ef67db8d06a0",
+                "f67c04937e09eef9",
+                "c708aabacb13520f",
+                "ed2c2b040137606a",
+                "bd80ab7cf9ce5e6e",
+                "5583fa93e96ebf90",
+                "496cfd365981afe7",
+                "ebc288f00686cac8",
+                "bd31e3c92cb51fc9"
+            ]
+        ]
+    },
+    {
+        "id": "2996ef67db8d06a0",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "focus",
+        "x": 640,
+        "y": 180,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "f67c04937e09eef9",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "excitement",
+        "x": 660,
+        "y": 240,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "d6661a13d522b65c",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "Find emotion",
+        "func": "// Initialize an object to store the metrics\nlet metrics = context.get('metrics') || {\n    focus: 0,\n    excitement: 0,\n    interest: 0,\n    engagement: 0,\n    stress: 0,\n    relaxation: 0,\n    longTermExcitement: 0,\n    mn8Attention: 0,\n    mn8CognitiveStress: 0\n};\n\n// Update the metric based on the incoming message\nmetrics[msg.topic] = msg.payload;\n\n// Save the updated metrics back to the context\ncontext.set('metrics', metrics);\n\n// Define the weighted contributions for each emotion\nconst happiness = 0.35 * metrics.engagement + 0.35 * metrics.interest + 0.30 * metrics.relaxation;\nconst sadness = 0.40 * metrics.stress + 0.10 * metrics.engagement + 0.50 * metrics.relaxation;\n\n// Check if the threshold for happiness or sadness is exceeded\nif (happiness > 70 || sadness > 70) {\n    // Reset metrics after exceeding the threshold\n    context.set('metrics', {});\n\n    // Prepare the output message\n    let emotion = happiness > sadness ? \"Happy\" : \"Sad\";\n    let level = happiness > sadness ? happiness : sadness;\n\n    msg.payload = `${emotion} level is ${level}`;\n    return msg; // Output the message and stop processing further metrics\n}\n\n// If no threshold is exceeded, do not output anything\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 220,
+        "wires": [
+            [
+                "e9fde001f2b4e7ec",
+                "ec15e57ab89d90ed"
+            ]
+        ]
+    },
+    {
+        "id": "c708aabacb13520f",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "interest",
+        "x": 640,
+        "y": 300,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "ed2c2b040137606a",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "engagement",
+        "x": 660,
+        "y": 360,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "bd80ab7cf9ce5e6e",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "stress",
+        "x": 640,
+        "y": 420,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "5583fa93e96ebf90",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "relaxation",
+        "x": 650,
+        "y": 480,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "496cfd365981afe7",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "longTermExcitement",
+        "x": 690,
+        "y": 540,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "ebc288f00686cac8",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "mn8-attention",
+        "x": 660,
+        "y": 600,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "bd31e3c92cb51fc9",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "mn8-cognitivestress",
+        "x": 680,
+        "y": 660,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "e9fde001f2b4e7ec",
+        "type": "debug",
+        "z": "41996be6d96fa283",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ec15e57ab89d90ed",
+        "type": "file",
+        "z": "41996be6d96fa283",
+        "name": "Brainter",
+        "filename": "C:\\Users\\charb\\Documents\\GitHub\\Brainter\\Image Generator\\mentalcommand.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 1120,
+        "y": 320,
+        "wires": [
+            []
+        ]
     }
 ]

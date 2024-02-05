@@ -1,0 +1,10 @@
+happy
+sad
+afraid
+angry
+nostalgic
+astonished
+disgusted
+peaceful
+nervous
+pleasure

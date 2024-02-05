@@ -8,17 +8,9 @@
         "env": []
     },
     {
-        "id": "f563bc474c51a0d2",
+        "id": "41996be6d96fa283",
         "type": "tab",
-        "label": "Facial With Led",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "5043c7920a794772",
-        "type": "tab",
-        "label": "Mental Commands",
+        "label": "Flow 1",
         "disabled": false,
         "info": "",
         "env": []
@@ -130,28 +122,6 @@
         "hidden": false
     },
     {
-        "id": "8b6ae23c272c8d51",
-        "type": "ui_group",
-        "name": "Brainter",
-        "tab": "308f09ba75c30f2f",
-        "order": 2,
-        "disp": true,
-        "width": "20",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "fea83661.1ab498",
-        "type": "ui_group",
-        "name": "Testing",
-        "tab": "d7908651.24f9b8",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "d7908651.24f9b8",
         "type": "ui_tab",
         "name": "Tab 1",
@@ -164,17 +134,6 @@
         "id": "3085cb252d0df0c1",
         "type": "openaiApiKey",
         "name": "Personal"
-    },
-    {
-        "id": "2052509108456867",
-        "type": "ui_group",
-        "name": "OpenAI Text completion",
-        "tab": "308f09ba75c30f2f",
-        "order": 1,
-        "disp": true,
-        "width": "20",
-        "collapse": false,
-        "className": ""
     },
     {
         "id": "f1f542807e71d6ca",
@@ -418,255 +377,200 @@
         "wires": []
     },
     {
-        "id": "8ee1f454053624cc",
-        "type": "ui_led",
-        "z": "f563bc474c51a0d2",
-        "order": 2,
-        "group": "fea83661.1ab498",
-        "width": 0,
-        "height": 0,
-        "label": "Smile Detected",
-        "colorForValue": [
-            {
-                "color": "#008000",
-                "value": "Smile",
-                "valueType": "str"
-            }
-        ],
-        "allowColorForValueInMessage": false,
-        "shape": "circle",
-        "showGlow": true,
-        "name": "",
-        "x": 1130,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "90e3e63d7b1b9854",
-        "type": "Facial-Expression",
-        "z": "f563bc474c51a0d2",
-        "name": "Facial Expressions",
-        "action": "smile",
-        "sens": "100",
-        "x": 670,
-        "y": 120,
-        "wires": [
-            [
-                "6e57b26133eb6e14",
-                "67cd450fc91bd7ed"
-            ]
-        ]
-    },
-    {
-        "id": "6e57b26133eb6e14",
-        "type": "switch",
-        "z": "f563bc474c51a0d2",
-        "name": "Threshold 50",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "gt",
-                "v": "30",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 910,
-        "y": 120,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "50444ec2d9b8e1c4",
+        "id": "5707331f2b6bb153",
         "type": "EMOTIV",
-        "z": "f563bc474c51a0d2",
+        "z": "41996be6d96fa283",
         "name": "EMOTIV",
-        "x": 140,
-        "y": 120,
+        "x": 160,
+        "y": 380,
         "wires": [
             [
-                "d976baf42633d0c5"
+                "1ce3629a6c9015ed"
             ]
         ]
     },
     {
-        "id": "d976baf42633d0c5",
+        "id": "1ce3629a6c9015ed",
         "type": "Profile-Name",
-        "z": "f563bc474c51a0d2",
+        "z": "41996be6d96fa283",
         "name": "Profile Name",
         "profileName": "Charbel",
-        "x": 380,
-        "y": 120,
+        "x": 340,
+        "y": 320,
         "wires": [
             [
-                "90e3e63d7b1b9854"
+                "2996ef67db8d06a0",
+                "f67c04937e09eef9",
+                "c708aabacb13520f",
+                "ed2c2b040137606a",
+                "bd80ab7cf9ce5e6e",
+                "5583fa93e96ebf90",
+                "496cfd365981afe7",
+                "ebc288f00686cac8",
+                "bd31e3c92cb51fc9"
             ]
         ]
     },
     {
-        "id": "67cd450fc91bd7ed",
+        "id": "2996ef67db8d06a0",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "focus",
+        "x": 640,
+        "y": 180,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "f67c04937e09eef9",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "excitement",
+        "x": 660,
+        "y": 240,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "d6661a13d522b65c",
         "type": "function",
-        "z": "f563bc474c51a0d2",
-        "name": "function 6",
-        "func": "if ( msg.payload >= 90) {\n  msg.payload = \"Smile\";\n}\nreturn msg\n// Return the message object",
+        "z": "41996be6d96fa283",
+        "name": "Find emotion",
+        "func": "// Initialize an object to store the metrics\nlet metrics = context.get('metrics') || {\n    focus: 0,\n    excitement: 0,\n    interest: 0,\n    engagement: 0,\n    stress: 0,\n    relaxation: 0,\n    longTermExcitement: 0,\n    mn8Attention: 0,\n    mn8CognitiveStress: 0\n};\n\n// Update the metric based on the incoming message\nmetrics[msg.topic] = msg.payload;\n\n// Save the updated metrics back to the context\ncontext.set('metrics', metrics);\n\n// Define the weighted contributions for each emotion\nconst happiness = 0.35 * metrics.engagement + 0.35 * metrics.interest + 0.30 * metrics.relaxation;\nconst sadness = 0.40 * metrics.stress + 0.10 * metrics.engagement + 0.50 * metrics.relaxation;\n\n// Check if the threshold for happiness or sadness is exceeded\nif (happiness > 70 || sadness > 70) {\n    // Reset metrics after exceeding the threshold\n    context.set('metrics', {});\n\n    // Prepare the output message\n    let emotion = happiness > sadness ? \"Happy\" : \"Sad\";\n    let level = happiness > sadness ? happiness : sadness;\n\n    msg.payload = `${emotion} level is ${level}, which exceeds the threshold.`;\n    return msg; // Output the message and stop processing further metrics\n}\n\n// If no threshold is exceeded, do not output anything\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 900,
-        "y": 180,
-        "wires": [
-            [
-                "8ee1f454053624cc"
-            ]
-        ]
-    },
-    {
-        "id": "337378d7.7c7328",
-        "type": "EMOTIV",
-        "z": "5043c7920a794772",
-        "name": "EMOTIV",
-        "x": 180,
-        "y": 160,
-        "wires": [
-            [
-                "13b9e855.55e2b8"
-            ]
-        ]
-    },
-    {
-        "id": "13b9e855.55e2b8",
-        "type": "Profile-Name",
-        "z": "5043c7920a794772",
-        "name": "Profile Name",
-        "profileName": "Charbel",
-        "x": 240,
+        "x": 950,
         "y": 220,
         "wires": [
             [
-                "3de480bf.41b19",
-                "98aa2d1e.0320c"
+                "e9fde001f2b4e7ec"
             ]
         ]
     },
     {
-        "id": "3de480bf.41b19",
-        "type": "Mental-Command",
-        "z": "5043c7920a794772",
-        "name": "Mental Commands",
-        "actionName": "left",
-        "mcSen": "10",
-        "x": 490,
-        "y": 160,
-        "wires": [
-            [
-                "29334321.88b60c"
-            ]
-        ]
-    },
-    {
-        "id": "98aa2d1e.0320c",
-        "type": "Mental-Command",
-        "z": "5043c7920a794772",
-        "name": "Mental Commands",
-        "actionName": "right",
-        "mcSen": "10",
-        "x": 490,
+        "id": "c708aabacb13520f",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "interest",
+        "x": 640,
         "y": 300,
         "wires": [
             [
-                "7c2aa7c.b960158"
+                "d6661a13d522b65c"
             ]
         ]
     },
     {
-        "id": "338358d05c8c7ea7",
+        "id": "ed2c2b040137606a",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "engagement",
+        "x": 660,
+        "y": 360,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "bd80ab7cf9ce5e6e",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "stress",
+        "x": 640,
+        "y": 420,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "5583fa93e96ebf90",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "relaxation",
+        "x": 650,
+        "y": 480,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "496cfd365981afe7",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "longTermExcitement",
+        "x": 690,
+        "y": 540,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "ebc288f00686cac8",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "mn8-attention",
+        "x": 660,
+        "y": 600,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "bd31e3c92cb51fc9",
+        "type": "Performance-Metric",
+        "z": "41996be6d96fa283",
+        "name": "Performance Metrics",
+        "pm": "mn8-cognitivestress",
+        "x": 680,
+        "y": 660,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "e9fde001f2b4e7ec",
         "type": "debug",
-        "z": "5043c7920a794772",
-        "name": "Left",
+        "z": "41996be6d96fa283",
+        "name": "debug 6",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
-        "y": 160,
+        "x": 1120,
+        "y": 220,
         "wires": []
-    },
-    {
-        "id": "7c2aa7c.b960158",
-        "type": "switch",
-        "z": "5043c7920a794772",
-        "name": "Threshold 50",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "gt",
-                "v": "50",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 710,
-        "y": 300,
-        "wires": [
-            [
-                "8d840c5d93077962"
-            ]
-        ]
-    },
-    {
-        "id": "8d840c5d93077962",
-        "type": "debug",
-        "z": "5043c7920a794772",
-        "name": "Right",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 970,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "29334321.88b60c",
-        "type": "switch",
-        "z": "5043c7920a794772",
-        "name": "Threshold 50",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "gt",
-                "v": "50",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 710,
-        "y": 160,
-        "wires": [
-            [
-                "338358d05c8c7ea7"
-            ]
-        ]
     }
 ]
