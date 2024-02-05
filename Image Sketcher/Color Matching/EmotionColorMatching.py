@@ -13,7 +13,7 @@ import pandas as pd
 # Function to wait for the mentalcommand.txt file to appear
 def wait_for_emotions():
     print("Waiting for emotions.txt...")
-    while not os.path.exists("emotions.txt"):
+    while not os.path.exists("Color Matching/emotions.txt"):
         time.sleep(1)  # Check every second for the file
     print("Found emotions.txt, proceeding with color matching.")
 
@@ -27,7 +27,7 @@ def writePromptToFile(emotion, colors):
 
 def createCSV():
     # converting csv of data to dataframe
-    dataframe = pd.read_csv('emotions.txt', sep=",",header=None)
+    dataframe = pd.read_csv('Color Matching/emotions.txt', sep=",",header=None)
     dfWords = dataframe[0]
     listOfEmotions = dfWords.values.tolist()
     setOfEmotions = set(listOfEmotions)
@@ -45,7 +45,7 @@ def createCSV():
             if 'gif' not in item['src']:
                 emotionsImages[emotion].append(item['src'])
 
-    with open('emotionimages.csv', 'w') as f:
+    with open('Color Matching/emotionimages.csv', 'w') as f:
         wr = csv.writer(f)
         wr.writerow(['Emotion', 'URLs'])
         for emotion in emotionsImages:
@@ -75,7 +75,7 @@ def fixRGB(r, g, b):
 
 def createDict():
     emotionColors = dict()
-    with open('emotions_images_colors.csv') as f:
+    with open('Color Matching/emotions_images_colors.csv') as f:
         fileString = f.read()
     
     firstLine = True
@@ -98,11 +98,11 @@ emotionColors = createDict()
 def generateRandColors():
     wait_for_emotions()
     createCSV()
-    df = pd.read_csv("emotionimages.csv")
+    df = pd.read_csv("Color Matching/emotionimages.csv")
     urls = df['URLs']
     colors = [dominantColor(url) for url in urls]
     df['color'] = colors
-    df.to_csv("emotions_images_colors.csv")
+    df.to_csv("Color Matching/emotions_images_colors.csv")
     print('Dominant Color Done.')
     emotion = input('Enter an emotion --> ')
     randomEmotion = dict()

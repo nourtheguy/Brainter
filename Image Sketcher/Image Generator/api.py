@@ -38,7 +38,7 @@ def generate_and_save_image(client, prompt_text, size_value, model="dall-e-2", q
                     image_file.write(image_response.content)
                 print(f"Image successfully generated and saved at {save_path}")
                 # Remove the file after processing to avoid reprocessing
-                os.remove("mentalcommand.txt")
+                os.remove("Image Generator/mentalcommand.txt")
             else:
                 raise ValueError("Failed to download the image.")
     except Exception as e:
@@ -47,11 +47,11 @@ def generate_and_save_image(client, prompt_text, size_value, model="dall-e-2", q
 # Function to wait for the mentalcommand.txt file to appear
 def wait_for_mental_command():
     print("Waiting for mentalcommand.txt...")
-    while not os.path.exists("mentalcommand.txt"):
+    while not os.path.exists("Image Generator/mentalcommand.txt"):
         time.sleep(1)  # Check every second for the file
     print("Found mentalcommand.txt, proceeding with image generation.")
 
-    with open("mentalcommand.txt", "r") as file:
+    with open("Image Generator/mentalcommand.txt", "r") as file:
         prompt_text = file.read().strip()
     return prompt_text
 
