@@ -16,6 +16,7 @@ from openai import OpenAI
 from pathlib import Path
 
 mode = None
+
 def check_for_files():
     emotion_file = Path("Image Sketcher/node-red-emotion.txt")
     command_file = Path("Image Sketcher/node-red-mentalcommand.txt")
@@ -25,50 +26,6 @@ def check_for_files():
         return "emotion", emotion_file
     else:
         return "none", None
-
-def process_mental_command(command_file):
-    global mode
-    api_key_file = "Image Sketcher/openai_api_key.txt"
-    client = initialize_openai_client(api_key_file)
-
-    if client is None:
-        print("Failed to initialize OpenAI client. Please check your API key.")
-        return
-
-    with open("Image Sketcher/node-red-mentalcommand.txt", "r") as file:
-        prompt_text = file.read().strip()
-
-    size_value = "256x256"
-    mode=2
-    generate_and_save_image(client, prompt_text, size_value)
-
-
-def process_emotion(emotion_file):
-    global mode
-    api_key_file = "Image Sketcher/openai_api_key.txt"
-    client = initialize_openai_client(api_key_file)
-
-    if client is None:
-        print("Failed to initialize OpenAI client. Please check your API key.")
-        return
-      # Directly use generateRandColors() to get both emotion and colors
-    result = generateRandColors()  # Assuming it reads the emotion inside the function
-    if result is None:
-        print("Error: generateRandColors() did not return valid data.")
-        return
-    
-    emotion, selected_colors = result  # Unpack the result into emotion and selected_colors
-
-    if len(selected_colors) < 3:
-        print("Error: Not enough colors generated.")
-        return
-
-    # Use unpacked emotion and selected_colors in the prompt
-    prompt = f"Please draw me an abstract image for the emotion '{emotion}' using these three dominant colors: {selected_colors[0]}, {selected_colors[1]}, {selected_colors[2]}"
-    size_value = "256x256"
-    mode= 1
-    generate_and_save_image(client, prompt, size_value)
-
 
 def createCSV():
     start_time = time.time() 
@@ -215,7 +172,48 @@ def generate_and_save_image(client, prompt_text, size_value, model="dall-e-2", q
     except Exception as e:
         print(f"Error generating image: {e}")
 
+def process_mental_command(command_file):
+    global mode
+    api_key_file = "Image Sketcher/openai_api_key.txt"
+    client = initialize_openai_client(api_key_file)
 
+    if client is None:
+        print("Failed to initialize OpenAI client. Please check your API key.")
+        return
+
+    with open("Image Sketcher/node-red-mentalcommand.txt", "r") as file:
+        prompt_text = file.read().strip()
+
+    size_value = "256x256"
+    mode=2
+    generate_and_save_image(client, prompt_text, size_value)
+
+
+def process_emotion(emotion_file):
+    global mode
+    api_key_file = "Image Sketcher/openai_api_key.txt"
+    client = initialize_openai_client(api_key_file)
+
+    if client is None:
+        print("Failed to initialize OpenAI client. Please check your API key.")
+        return
+      # Directly use generateRandColors() to get both emotion and colors
+    result = generateRandColors()  # Assuming it reads the emotion inside the function
+    if result is None:
+        print("Error: generateRandColors() did not return valid data.")
+        return
+    
+    emotion, selected_colors = result  # Unpack the result into emotion and selected_colors
+
+    if len(selected_colors) < 3:
+        print("Error: Not enough colors generated.")
+        return
+
+    # Use unpacked emotion and selected_colors in the prompt
+    prompt = f"Please draw me an abstract image for the emotion '{emotion}' using these three dominant colors: {selected_colors[0]}, {selected_colors[1]}, {selected_colors[2]}"
+    size_value = "256x256"
+    mode= 1
+    generate_and_save_image(client, prompt, size_value)
 
 # Main execution function
 def main():
