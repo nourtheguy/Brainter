@@ -18,7 +18,7 @@ def vectorization(input_folder, output_folder):
 
     def image_to_svg_with_edge_detection(image_path, svg_path):
         img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
-        edges = cv2.Canny(img, 800, 1200)
+        edges = cv2.Canny(img, 1000, 1400)
         img_edges = Image.fromarray(edges)
         dwg = svgwrite.Drawing(svg_path, profile="tiny")
         dwg.add(dwg.rect(insert=(0, 0), size=("100%", "100%"), fill="black"))
