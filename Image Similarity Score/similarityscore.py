@@ -1,6 +1,7 @@
 from skimage.metrics import structural_similarity as ssim
 from skimage.transform import resize
 import cv2
+import time
 '''
 def orb_sim(img1, img2):
     # Initialize ORB
@@ -17,14 +18,20 @@ def orb_sim(img1, img2):
         return 0
     similar_regions = [1 for m in matches if m.distance < 50]
     return len(similar_regions) / len(matches)
-'''
+''' 
+
+
 def structural_sim(img1, img2):
     # Ensure images are the same size
     img2_resized = resize(img2, (img1.shape[0], img1.shape[1]), anti_aliasing=True, preserve_range=True)
     data_range = 255
 
     # Calculate SSIM, specifying the data range for floating point images
+    start_time = time.time()  # Start timing
     similarity, _ = ssim(img1, img2_resized, data_range=data_range, full=True)
+    end_time = time.time()  # End timing
+    duration = end_time - start_time  # Calculate duration
+    print(f"SSIM calculation took {duration} seconds.")
     return similarity
 
 

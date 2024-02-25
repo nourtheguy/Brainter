@@ -10,6 +10,14 @@
     {
         "id": "41996be6d96fa283",
         "type": "tab",
+        "label": "Emotion Finder",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "066e4ad3331afd38",
+        "type": "tab",
         "label": "Flow 1",
         "disabled": false,
         "info": "",
@@ -187,7 +195,7 @@
         "id": "de45441b395d991d",
         "type": "function",
         "z": "ee9757178de2cc83",
-        "name": "function 3",
+        "name": "Detect first command",
         "func": "\n\n// Retrieve the 'commandTriggered' flag from the context, defaulting to false if not set\nlet commandTriggered = context.get('commandTriggered') || false;\n\n// Check if a command has already been triggered\nif (commandTriggered) {\n  // If a command was already triggered, do nothing and return null to stop the flow\n  return null;\n}\n\n// Check which command is received and if it passes the threshold\nif (msg.payload === \"Left\") {\n  msg.payload = \"Left\";\n  // Set the 'commandTriggered' flag to true to prevent further triggers\n  context.set('commandTriggered', true);\n} else if (msg.payload === \"Right\" ) {\n  msg.payload = \"Right\";\n  // Set the 'commandTriggered' flag to true to prevent further triggers\n  context.set('commandTriggered', true);\n} else {\n  // If neither command passes the threshold, do nothing and return null\n  return null;\n}\n\n// Return the message object to continue the flow\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
@@ -195,7 +203,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1240,
+        "x": 1280,
         "y": 340,
         "wires": [
             [
@@ -239,7 +247,7 @@
         "type": "file",
         "z": "ee9757178de2cc83",
         "name": "Brainter",
-        "filename": "C:\\Users\\charb\\Documents\\GitHub\\Brainter\\Image Generator\\mentalcommand.txt",
+        "filename": "C:\\Users\\charb\\Documents\\GitHub\\Brainter\\Image Sketcher\\node-red-mentalcommand.txt",
         "filenameType": "str",
         "appendNewline": true,
         "createDir": true,
@@ -323,7 +331,7 @@
         "id": "bac8be6352a4ed2c",
         "type": "function",
         "z": "ee9757178de2cc83",
-        "name": "function 7",
+        "name": "Write command",
         "func": "if (msg.payload > 90) {\n    msg.payload = \"Left\";\n    // Set the 'commandTriggered' flag to true to prevent further triggers\n\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -331,7 +339,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1020,
+        "x": 1040,
         "y": 300,
         "wires": [
             [
@@ -343,7 +351,7 @@
         "id": "f962ac8fc85ee126",
         "type": "function",
         "z": "ee9757178de2cc83",
-        "name": "function 8",
+        "name": "Write command",
         "func": "if (msg.payload > 70) {\n    msg.payload = \"Right\";\n    // Set the 'commandTriggered' flag to true to prevent further triggers\n\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -351,7 +359,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1020,
+        "x": 1040,
         "y": 440,
         "wires": [
             [
@@ -399,29 +407,18 @@
         "y": 320,
         "wires": [
             [
-                "2996ef67db8d06a0",
                 "f67c04937e09eef9",
                 "c708aabacb13520f",
                 "ed2c2b040137606a",
                 "bd80ab7cf9ce5e6e",
                 "5583fa93e96ebf90",
-                "496cfd365981afe7",
-                "ebc288f00686cac8",
-                "bd31e3c92cb51fc9"
-            ]
-        ]
-    },
-    {
-        "id": "2996ef67db8d06a0",
-        "type": "Performance-Metric",
-        "z": "41996be6d96fa283",
-        "name": "Performance Metrics",
-        "pm": "focus",
-        "x": 640,
-        "y": 180,
-        "wires": [
-            [
-                "d6661a13d522b65c"
+                "e59b89a54aeb9746",
+                "89efe5ab657e9fad",
+                "5308f49f7f3ca4bd",
+                "3b7b13858ec3ee9e",
+                "7b1a4f39fe4c53e4",
+                "2a401ebd8ec28430",
+                "beaea40c5770c499"
             ]
         ]
     },
@@ -435,7 +432,7 @@
         "y": 240,
         "wires": [
             [
-                "d6661a13d522b65c"
+                "ef9b313a915524f7"
             ]
         ]
     },
@@ -443,19 +440,19 @@
         "id": "d6661a13d522b65c",
         "type": "function",
         "z": "41996be6d96fa283",
-        "name": "Find emotion",
-        "func": "// Initialize an object to store the metrics\nlet metrics = context.get('metrics') || {\n    focus: 0,\n    excitement: 0,\n    interest: 0,\n    engagement: 0,\n    stress: 0,\n    relaxation: 0,\n    longTermExcitement: 0,\n    mn8Attention: 0,\n    mn8CognitiveStress: 0\n};\n\n// Update the metric based on the incoming message\nmetrics[msg.topic] = msg.payload;\n\n// Save the updated metrics back to the context\ncontext.set('metrics', metrics);\n\n// Define the weighted contributions for each emotion\nconst happiness = 0.35 * metrics.engagement + 0.35 * metrics.interest + 0.30 * metrics.relaxation;\nconst sadness = 0.40 * metrics.stress + 0.10 * metrics.engagement + 0.50 * metrics.relaxation;\n\n// Check if the threshold for happiness or sadness is exceeded\nif (happiness > 70 || sadness > 70) {\n    // Reset metrics after exceeding the threshold\n    context.set('metrics', {});\n\n    // Prepare the output message\n    let emotion = happiness > sadness ? \"Happy\" : \"Sad\";\n    let level = happiness > sadness ? happiness : sadness;\n\n    msg.payload = `${emotion} level is ${level}, which exceeds the threshold.`;\n    return msg; // Output the message and stop processing further metrics\n}\n\n// If no threshold is exceeded, do not output anything\nreturn null;\n",
+        "name": "Calculate Scores",
+        "func": "// Initialize or retrieve the accumulated data from the context\nlet data = context.get('data') || {};\n\n// Update the context with new values as they come\nif (msg.excitement !== undefined) {\n    data.excitement = msg.excitement;\n}\nif (msg.attention !== undefined) {\n    data.attention = msg.attention;\n}\nif (msg.interest !== undefined) {\n    data.interest = msg.interest;\n}\nif (msg.relaxation !== undefined) {\n    data.relaxation = msg.relaxation;\n}\nif (msg.stress !== undefined) {\n    data.stress = msg.stress;\n}\nif (msg.engagement !== undefined) {\n    data.engagement = msg.engagement;\n}\nif (msg.smile !== undefined) {\n    data.smile = msg.smile;\n}\nif (msg.frown !== undefined) {\n    data.frown = msg.frown;\n}\nif (msg.surprise !== undefined) {\n    data.surprise = msg.surprise;\n}\nif (msg.clench !== undefined) {\n    data.clench = msg.clench;\n}\nif (msg.ufNeutral !== undefined) {\n    data.ufNeutral = msg.ufNeutral;\n}\nif (msg.lfNeutral !== undefined) {\n    data.lfNeutral = msg.lfNeutral;\n}\n\n// Save the updated data back to the context\ncontext.set('data', data);\n// Initialize or retrieve the previous emotions' totals and counts from the context\nlet previousTotals = context.get('previousTotals') || { Happy: 0, Sad: 0, Afraid: 0, Angry: 0, Peaceful: 0 };\nlet counts = context.get('counts') || 0; // A single count assuming each set of emotions are updated together\n\n// Check if all required properties are present\nif (data.excitement !== undefined && data.attention !== undefined && data.interest !== undefined &&\n    data.relaxation !== undefined && data.stress !== undefined && data.engagement !== undefined &&\n    data.smile !== undefined && data.frown !== undefined && data.surprise !== undefined &&\n    data.clench !== undefined && data.ufNeutral !== undefined && data.lfNeutral !== undefined) {\n\n    // Compute new values for each emotion\n    let newValues = {\n        Happy: 0.125 * data.excitement + 0.05 * data.attention + 0.075 * data.relaxation + 0.05 * data.stress + 0.125 * data.engagement + 0.075 * data.interest + 0.6 * data.smile,\n        Sad: 0.05 * data.excitement + 0.125 * data.attention + 0.05 * data.relaxation + 0.125 * data.stress + 0.075 * data.engagement + 0.075 * data.interest + 0.6 * data.frown,\n        Afraid: 0.075 * data.excitement + 0.05 * data.attention + 0.05 * data.relaxation + 0.125 * data.stress + 0.125 * data.engagement + 0.075 * data.interest + 0.6 * data.surprise,\n        Angry: 0.075 * data.excitement + 0.05 * data.attention + 0.05 * data.relaxation + 0.125 * data.stress + 0.125 * data.engagement + 0.075 * data.interest + 0.6 * data.clench,\n        Peaceful: 0.05 * data.excitement + 0.125 * data.attention + 0.125 * data.relaxation + 0.05 * data.stress + 0.075 * data.engagement + 0.075 * data.interest + 0.3 * data.ufNeutral + 0.3 * data.lfNeutral\n    };\n\n    // Update cumulative totals and count\n    counts += 1; // Increment the count for averaging\n    Object.keys(previousTotals).forEach(emotion => {\n        previousTotals[emotion] += newValues[emotion];\n    });\n\n    // Compute the average for each emotion\n    let averages = {};\n    Object.keys(previousTotals).forEach(emotion => {\n        averages[emotion] = previousTotals[emotion] / counts;\n    });\n\n    // Update the msg.payload with the averages\n    msg.payload = averages;\n    msg.averages=msg.payload;\n\n    // Save the updated totals and count back to the context for the next execution\n    context.set('previousTotals', previousTotals);\n    context.set('counts', counts);\n\n    // Optionally, you can clear the 'data' context if needed\n    context.set('data', {});\n} else {\n    // If any property is missing, do not proceed with the calculation\n    return null; // This will stop the function and not output any message\n}\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 950,
+        "x": 1630,
         "y": 220,
         "wires": [
             [
-                "e9fde001f2b4e7ec"
+                "21ec378b1cadc715"
             ]
         ]
     },
@@ -469,7 +466,7 @@
         "y": 300,
         "wires": [
             [
-                "d6661a13d522b65c"
+                "d8426a01a64dbccd"
             ]
         ]
     },
@@ -483,7 +480,7 @@
         "y": 360,
         "wires": [
             [
-                "d6661a13d522b65c"
+                "93f0cb5d2011eaed"
             ]
         ]
     },
@@ -497,7 +494,7 @@
         "y": 420,
         "wires": [
             [
-                "d6661a13d522b65c"
+                "b00b0d055cda8091"
             ]
         ]
     },
@@ -511,46 +508,145 @@
         "y": 480,
         "wires": [
             [
-                "d6661a13d522b65c"
+                "55bf7d1a8b4bed26"
             ]
         ]
     },
     {
-        "id": "496cfd365981afe7",
-        "type": "Performance-Metric",
+        "id": "ec15e57ab89d90ed",
+        "type": "file",
         "z": "41996be6d96fa283",
-        "name": "Performance Metrics",
-        "pm": "longTermExcitement",
-        "x": 690,
+        "name": "Brainter",
+        "filename": "C:\\Users\\charb\\Documents\\GitHub\\Brainter\\Image Sketcher\\node-red-emotion.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 2260,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e59b89a54aeb9746",
+        "type": "Facial-Expression",
+        "z": "41996be6d96fa283",
+        "name": "Facial Expressions",
+        "action": "smile",
+        "sens": "10",
+        "x": 630,
         "y": 540,
         "wires": [
             [
-                "d6661a13d522b65c"
+                "b081739a048357b0"
             ]
         ]
     },
     {
-        "id": "ebc288f00686cac8",
-        "type": "Performance-Metric",
+        "id": "89efe5ab657e9fad",
+        "type": "Facial-Expression",
         "z": "41996be6d96fa283",
-        "name": "Performance Metrics",
-        "pm": "mn8-attention",
-        "x": 660,
+        "name": "Facial Expressions",
+        "action": "frown",
+        "sens": "0",
+        "x": 630,
         "y": 600,
         "wires": [
             [
-                "d6661a13d522b65c"
+                "127e148b453eb551"
             ]
         ]
     },
     {
-        "id": "bd31e3c92cb51fc9",
+        "id": "5308f49f7f3ca4bd",
+        "type": "Facial-Expression",
+        "z": "41996be6d96fa283",
+        "name": "Facial Expressions",
+        "action": "surprise",
+        "sens": "0",
+        "x": 640,
+        "y": 660,
+        "wires": [
+            [
+                "61044ea6da573530"
+            ]
+        ]
+    },
+    {
+        "id": "3b7b13858ec3ee9e",
+        "type": "Facial-Expression",
+        "z": "41996be6d96fa283",
+        "name": "Facial Expressions",
+        "action": "clench",
+        "sens": "0",
+        "x": 640,
+        "y": 720,
+        "wires": [
+            [
+                "4332a6aba0827a29"
+            ]
+        ]
+    },
+    {
+        "id": "7b1a4f39fe4c53e4",
+        "type": "Facial-Expression",
+        "z": "41996be6d96fa283",
+        "name": "Facial Expressions",
+        "action": "uf-neutral",
+        "sens": "0",
+        "x": 650,
+        "y": 780,
+        "wires": [
+            [
+                "1d5ced30a3ab320c"
+            ]
+        ]
+    },
+    {
+        "id": "2a401ebd8ec28430",
+        "type": "Facial-Expression",
+        "z": "41996be6d96fa283",
+        "name": "Facial Expressions",
+        "action": "lf-neutral",
+        "sens": "0",
+        "x": 640,
+        "y": 840,
+        "wires": [
+            [
+                "0a9d2c99cb1fb183"
+            ]
+        ]
+    },
+    {
+        "id": "beaea40c5770c499",
         "type": "Performance-Metric",
         "z": "41996be6d96fa283",
         "name": "Performance Metrics",
-        "pm": "mn8-cognitivestress",
-        "x": 680,
-        "y": 660,
+        "pm": "focus",
+        "x": 640,
+        "y": 160,
+        "wires": [
+            [
+                "9983d9a43145f23d"
+            ]
+        ]
+    },
+    {
+        "id": "d8426a01a64dbccd",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "interest",
+        "func": "// Set a custom property with your variable\nmsg.interest = msg.payload;\n\n// Make sure to return the msg object to pass it to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1200,
+        "y": 280,
         "wires": [
             [
                 "d6661a13d522b65c"
@@ -558,7 +654,277 @@
         ]
     },
     {
-        "id": "e9fde001f2b4e7ec",
+        "id": "ef9b313a915524f7",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "excitement",
+        "func": "// Set a custom property with your variable\nmsg.excitement = msg.payload;\n\n// Make sure to return the msg object to pass it to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1210,
+        "y": 200,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "9983d9a43145f23d",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "focus",
+        "func": "// Retrieve the stored value from the context, if it exists\nvar storedValue = context.get('storedValue') || null;\n\n// Check if storedValue has been set before\nif (storedValue === null) {\n    // If not, this is the first message, so store the current payload\n    context.set('storedValue', msg.payload);\n    msg.attention = msg.payload; // Set the new variable with the current payload\n} else {\n    // If storedValue exists, check if the new input is different\n    if (storedValue !== msg.payload) {\n        // If the input is updated (different), update the stored value and the new variable\n        context.set('storedValue', msg.payload);\n        msg.attention = msg.payload;\n    } else {\n        // If the input is the same, keep the stored value\n        msg.attention = storedValue;\n    }\n}\n\n// Make sure to return the msg object to pass it to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 120,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "93f0cb5d2011eaed",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "engagement",
+        "func": "// Set a custom property with your variable\nmsg.engagement = msg.payload;\n\n// Make sure to return the msg object to pass it to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1210,
+        "y": 340,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "b00b0d055cda8091",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "stress",
+        "func": "// Set a custom property with your variable\nmsg.stress = msg.payload;\n\n// Make sure to return the msg object to pass it to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 400,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "55bf7d1a8b4bed26",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "relaxation",
+        "func": "// Set a custom property with your variable\nmsg.relaxation = msg.payload;\n\n// Make sure to return the msg object to pass it to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1200,
+        "y": 460,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "b081739a048357b0",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "smile",
+        "func": "// Set a custom property with your variable\nmsg.smile = msg.payload;\n\n// Make sure to return the msg object to pass it to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 520,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "127e148b453eb551",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "frown",
+        "func": "// Set a custom property with your variable\nmsg.frown = msg.payload;\n\n// Make sure to return the msg object to pass it to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 580,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "61044ea6da573530",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "surprise",
+        "func": "// Set a custom property with your variable\nmsg.surprise = msg.payload;\n\n// Make sure to return the msg object to pass it to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1200,
+        "y": 640,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "4332a6aba0827a29",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "clench",
+        "func": "// Set a custom property with your variable\nmsg.clench = msg.payload;\n\n// Make sure to return the msg object to pass it to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 700,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "1d5ced30a3ab320c",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "ufNeutral",
+        "func": "// Set a custom property with your variable\nmsg.ufNeutral = msg.payload;\n\n// Make sure to return the msg object to pass it to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1200,
+        "y": 760,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "0a9d2c99cb1fb183",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "lfNeutral",
+        "func": "// Set a custom property with your variable\nmsg.lfNeutral = msg.payload;\n\n// Make sure to return the msg object to pass it to the next node\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1200,
+        "y": 820,
+        "wires": [
+            [
+                "d6661a13d522b65c"
+            ]
+        ]
+    },
+    {
+        "id": "600a21ba0629e7e8",
+        "type": "inject",
+        "z": "41996be6d96fa283",
+        "name": "After 40 seconds",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "check",
+        "payloadType": "str",
+        "x": 1710,
+        "y": 140,
+        "wires": [
+            [
+                "21ec378b1cadc715"
+            ]
+        ]
+    },
+    {
+        "id": "21ec378b1cadc715",
+        "type": "function",
+        "z": "41996be6d96fa283",
+        "name": "Highest Emotions",
+        "func": "let checkCounter = flow.get(\"checkCounter\") || 0;\nlet oneloop=0;\n// Increment the check counter if the incoming message payload is \"check\"\nif (msg.payload === \"check\") {\n    checkCounter += 1;\n    flow.set(\"checkCounter\", checkCounter);\n}\n\nif (checkCounter >=1){\n    // Ensure msg.averages exists and is an object\n    if (typeof msg.averages === \"object\" && msg.averages !== null) {\n        let highestEmotion = null;\n        let highestValue = -Infinity; // Start with the lowest possible number\n\n        // Iterate over each emotion in msg.averages\n        Object.keys(msg.averages).forEach(emotion => {\n            if (msg.averages[emotion] > highestValue) {\n                highestValue = msg.averages[emotion];\n                highestEmotion = emotion;\n            }\n        });\n\n\n        if(highestEmotion==\"Happy\"){\n        msg.payload = \"happy\"; \n        }\n        // Set the highest emotion as the message payload\n       \n    } else {\n       return null;\n    }\n} else {\n    // If checkCounter is not >= 1, you might not want to send any message\n    return null;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1990,
+        "y": 200,
+        "wires": [
+            [
+                "0eea0dfb4784595d",
+                "ec15e57ab89d90ed"
+            ]
+        ]
+    },
+    {
+        "id": "0eea0dfb4784595d",
         "type": "debug",
         "z": "41996be6d96fa283",
         "name": "debug 6",
@@ -569,8 +935,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1120,
-        "y": 220,
+        "x": 2400,
+        "y": 120,
         "wires": []
     }
 ]

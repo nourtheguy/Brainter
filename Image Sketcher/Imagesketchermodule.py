@@ -104,13 +104,7 @@ emotionColors = createDict()
 
 def generateRandColors():
     createCSV()
-    df = pd.read_csv("Image Sketcher/emotionimages.csv")
-    start_time = time.time() 
-    urls = df['URLs']
-    colors = [dominantColor(url) for url in urls]
-    df['color'] = colors
-    df.to_csv("Image Sketcher/emotions_images_colors.csv")
-    print(f"Process getting the dominant colors took  {time.time() - start_time} seconds.")  # End measuring time
+    df = pd.read_csv("Image Sketcher/emotionimages.csv") 
     emotion_file = Path("Image Sketcher/node-red-emotion.txt")
     randomEmotion = dict()
     emotion = emotion_file.read_text().strip() 
