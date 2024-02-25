@@ -97,9 +97,9 @@ preset_colors = np.array(
 
 # Example usage
 if __name__ == "__main__":
-    input_image_path = "G-Code Generator/Assets/Images/test.png"
+    input_image_path = "G-Code Generator/Assets/Images/img_4.png"
     output_image_path = (
-        "G-Code Generator/Assets/Quantized Images/test_quantized_PCA.png"
+        "G-Code Generator/Assets/Quantized Images/img_4_quantized_PCA.png"
     )
 
     try:

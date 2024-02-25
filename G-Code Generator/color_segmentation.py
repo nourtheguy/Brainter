@@ -85,7 +85,7 @@ color_names = [
 
 # Example usage
 if __name__ == "__main__":
-    input_image_path = "G-Code Generator/Assets/Quantized Images/test_quantized.png"
+    input_image_path = "G-Code Generator/Assets/Quantized Images/test_quantized_PCA.png"
     output_folder = "G-Code Generator/Assets/Segmented Images/test"
 
     try:
