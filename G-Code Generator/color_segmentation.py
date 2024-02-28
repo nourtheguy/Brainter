@@ -85,8 +85,8 @@ color_names = [
 
 # Example usage
 if __name__ == "__main__":
-    input_image_path = "G-Code Generator/Assets/Quantized Images/test_quantized_PCA.png"
-    output_folder = "G-Code Generator/Assets/Segmented Images/test"
+    input_image_path = "G-Code Generator/Assets/Quantized Images/img_5_quantized_PCA.png"
+    output_folder = "G-Code Generator/Assets/Segmented Images/img_5"
 
     try:
         color_segmentation(input_image_path, output_folder, preset_colors, color_names)

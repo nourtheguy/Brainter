@@ -1,24 +1,35 @@
+import os
 import xml.etree.ElementTree as ET
 import math
 import time
-import os
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 
-def process_all_svg_in_folder(folder_path):
-    def distance(cx1, cy1, cx2, cy2):
-        return math.sqrt((cx2 - cx1) ** 2 + (cy2 - cy1) ** 2)
+def process_svg_file(svg_file_path):
+    try:
+        namespace = {"svg": "http://www.w3.org/2000/svg"}
+        tree = ET.parse(svg_file_path)
+        root = tree.getroot()
 
-    def find_connected_circles(circles):
+        circles = [
+            (
+                float(circle.attrib["cx"]),
+                float(circle.attrib["cy"]),
+                float(circle.attrib["r"]),
+            )
+            for circle in root.findall(".//svg:circle", namespace)
+        ]
+
         connected_pairs = []
         for i in range(len(circles)):
             for j in range(i + 1, len(circles)):
-                if distance(*circles[i][:2], *circles[j][:2]) <= (
-                    circles[i][2] + circles[j][2] + 1
-                ):
+                if math.sqrt(
+                    (circles[j][0] - circles[i][0]) ** 2
+                    + (circles[j][1] - circles[i][1]) ** 2
+                ) <= (circles[i][2] + circles[j][2] + 1):
                     connected_pairs.append((i, j))
-        return connected_pairs
 
-    def replace_circles_with_lines(tree, root, namespace, connected_pairs, circles):
+        all_circles = root.findall(".//svg:circle", namespace)
         circles_to_remove = set()
         for i, j in connected_pairs:
             line = ET.Element(
@@ -38,34 +49,44 @@ def process_all_svg_in_folder(folder_path):
         for index in sorted(circles_to_remove, reverse=True):
             root.remove(all_circles[index])
 
+        tree.write(svg_file_path)
+        return f"Processed {svg_file_path}"
+
+    except Exception as e:
+        return f"Failed to process {svg_file_path}: {e}"
+
+
+def process_all_svg_in_folder(folder_path):
     start_time = time.time()
-    namespace = {"svg": "http://www.w3.org/2000/svg"}
 
-    for filename in os.listdir(folder_path):
-        if filename.lower().endswith(".svg"):
-            svg_file_path = os.path.join(folder_path, filename)
-            print(f"Processing {svg_file_path}...")
+    svg_files = [
+        os.path.join(folder_path, f)
+        for f in os.listdir(folder_path)
+        if f.lower().endswith(".svg")
+    ]
 
-            tree = ET.parse(svg_file_path)
-            root = tree.getroot()
-
-            circles = [
-                (
-                    float(circle.attrib["cx"]),
-                    float(circle.attrib["cy"]),
-                    float(circle.attrib["r"]),
-                )
-                for circle in root.findall(".//svg:circle", namespace)
-            ]
-
-            all_circles = root.findall(".//svg:circle", namespace)
-            connected_pairs = find_connected_circles(circles)
-            replace_circles_with_lines(tree, root, namespace, connected_pairs, circles)
-
-            tree.write(svg_file_path)
+    # Adjust max_workers based on your system's capabilities and the task's requirements
+    with ProcessPoolExecutor(max_workers=22) as executor:
+        future_to_file = {
+            executor.submit(process_svg_file, file): file for file in svg_files
+        }
+        for future in as_completed(future_to_file):
+            file = future_to_file[future]
+            try:
+                result = future.result()
+                print(result)
+            except Exception as exc:
+                print(f"{file} generated an exception: {exc}")
 
     end_time = time.time()
     print(f"Completed processing all SVGs in {end_time - start_time:.2f} seconds.")
 
 
-# Note: This optimization assumes no structural changes to your approach. Further optimizations might require more significant changes.
+def main():
+    # Example usage:
+    folder_path = "G-Code Generator/Assets/Vectorized Images/img_1"
+    process_all_svg_in_folder(folder_path)
+
+
+if __name__ == "__main__":
+    main()
