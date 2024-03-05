@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import os
+import time
 
 
 def color_segmentation(input_image_path, output_folder, preset_colors, color_names):
@@ -12,6 +13,8 @@ def color_segmentation(input_image_path, output_folder, preset_colors, color_nam
     :param preset_colors: Preset array of colors.
     :param color_names: List of names corresponding to each color in the preset.
     """
+
+    start_time = time.time()
 
     def segment_color(image, color):
         mask = cv2.inRange(image, color, color)
@@ -45,6 +48,9 @@ def color_segmentation(input_image_path, output_folder, preset_colors, color_nam
         if segmented_image is not None:  # Only save if the color is present
             output_path = os.path.join(output_folder, f"{name}.png")
             cv2.imwrite(output_path, segmented_image)
+
+    end_time = time.time()  # Record the end time
+    print(f"Color segmentation completed in {end_time - start_time:.2f} seconds.")
 
 
 # Preset List of colors from color_quantization.py
@@ -85,11 +91,12 @@ color_names = [
 
 # Example usage
 if __name__ == "__main__":
-    input_image_path = "G-Code Generator/Assets/Quantized Images/img_5_quantized_PCA.png"
+    input_image_path = (
+        "G-Code Generator/Assets/Quantized Images/img_5_quantized_PCA.png"
+    )
     output_folder = "G-Code Generator/Assets/Segmented Images/img_5"
 
     try:
         color_segmentation(input_image_path, output_folder, preset_colors, color_names)
-        print("Color segmentation completed successfully.")
     except Exception as e:
         print("Error:", e)
