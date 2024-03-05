@@ -84,7 +84,7 @@ def process_all_svg_in_folder(folder_path):
 
 def main():
     # Example usage:
-    folder_path = "G-Code Generator/Assets/Vectorized Images/img_1"
+    folder_path = "G-Code Generator/Assets/Vectorized Images/img_5"
     process_all_svg_in_folder(folder_path)
 
 
