@@ -53,7 +53,7 @@ def gcode_generation(input_directory, output_directory):
 
 
 # Usage
-input_directory = "G-Code Generator/Assets/Vectorized Images/img_5"  # Replace with your input folder containing SVG files
-output_directory = "G-Code Generator/Assets/GCode/img_5"  # Replace with your desired output folder for G-code files
+input_directory = "GCodeGenerator/Assets/Vectorized Images/img_5"
+output_directory = "GCodeGenerator/Assets/GCode/img_5"
 
 gcode_generation(input_directory, output_directory)

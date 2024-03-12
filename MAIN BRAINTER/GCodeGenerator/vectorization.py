@@ -48,6 +48,6 @@ def vectorization(input_folder, output_folder):
 
 
 # Example usage
-input_folder = "G-Code Generator/Assets/Segmented Images/img_5"
-output_folder = "G-Code Generator/Assets/Vectorized Images/img_5"
+input_folder = "GCodeGenerator/Assets/Segmented Images/img_5"
+output_folder = "GCodeGenerator/Assets/Vectorized Images/img_5"
 vectorization(input_folder, output_folder)
