@@ -4,7 +4,7 @@ import time
 from sklearn.decomposition import PCA
 
 
-def color_quantization(
+def color_quantization_PCA(
     input_image_path,
     output_image_path,
     preset_colors,
@@ -95,19 +95,17 @@ preset_colors = np.array(
     ]
 )
 
-# Example usage
-if __name__ == "__main__":
-    input_image_path = "GCodeGenerator/Assets/Images/img_5.png"
-    output_image_path = (
-        "GCodeGenerator/Assets/Quantized Images/img_5_quantized_PCA.png"
-    )
+# # Example usage
+# if __name__ == "__main__":
+#     input_image_path = "GCodeGenerator/Assets/Images/img_5.png"
+#     output_image_path = "GCodeGenerator/Assets/Quantized Images/img_5_quantized_PCA.png"
 
-    try:
-        start_time = time.time()
-        color_quantization(input_image_path, output_image_path, preset_colors)
-        end_time = time.time()
-        print(
-            f"Image processed and saved successfully. Time taken: {end_time - start_time:.2f} seconds."
-        )
-    except Exception as e:
-        print("Error:", e)
+#     try:
+#         start_time = time.time()
+#         color_quantization_PCA(input_image_path, output_image_path, preset_colors)
+#         end_time = time.time()
+#         print(
+#             f"Image processed and saved successfully. Time taken: {end_time - start_time:.2f} seconds."
+#         )
+#     except Exception as e:
+#         print("Error:", e)

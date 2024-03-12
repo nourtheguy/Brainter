@@ -149,7 +149,7 @@ def generate_and_save_image(
 ):
     start_time = time.time()
     print(f"we will be generating the following prompt : {prompt_text}")
-    save_dir = "MAIN BRAINTER/G-Code Generator/Assets/Images"
+    save_dir = "MAIN BRAINTER/GCodeGenerator/Assets/Images"
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 

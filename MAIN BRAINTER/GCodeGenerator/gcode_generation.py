@@ -44,16 +44,16 @@ def gcode_generation(input_directory, output_directory):
             f"G-code generated for: {os.path.basename(svg_file_path)} -> {gcode_file_name}"
         )
 
-    start_time = time.time()
+    # start_time = time.time()
     svg_files = glob.glob(os.path.join(input_directory, "*.svg"))
     for svg_file in svg_files:
         generate_gcode_for_svg(svg_file, output_directory)
-    end_time = time.time()
-    print(f"All SVG files processed. Duration: {end_time - start_time:.2f} seconds.")
+    # end_time = time.time()
+    # print(f"All SVG files processed. Duration: {end_time - start_time:.2f} seconds.")
 
 
-# Usage
-input_directory = "GCodeGenerator/Assets/Vectorized Images/img_5"
-output_directory = "GCodeGenerator/Assets/GCode/img_5"
+# # Usage
+# input_directory = "GCodeGenerator/Assets/Vectorized Images/img_5"
+# output_directory = "GCodeGenerator/Assets/GCode/img_5"
 
-gcode_generation(input_directory, output_directory)
+# gcode_generation(input_directory, output_directory)

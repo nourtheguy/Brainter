@@ -1,7 +1,10 @@
 from ImageSketcher.Imagesketchermodule import *
+from GCodeGenerator.TopG import *
+import time
 
 
 def main():
+    start = time.time()
     # generates an image after receiving a text file from node red
     print("Waiting for the necessary information")
     while True:
@@ -16,6 +19,9 @@ def main():
             process_emotion(file_path)
             print("Finished emotion color matching  process.")
             break
+    TopG()
+    end = time.time()
+    print("Total time taken = " + str(end - start) + " seconds")
 
 
 if __name__ == "__main__":

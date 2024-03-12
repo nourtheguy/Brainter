@@ -30,7 +30,7 @@ def vectorization(input_folder, output_folder):
                     dwg.add(dwg.circle(center=(x, y), r=radius, fill="white"))
         dwg.save()
 
-    start_time = time.time()
+    # start_time = time.time()
 
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
@@ -43,11 +43,11 @@ def vectorization(input_folder, output_folder):
             image_to_svg_with_edge_detection(image_path, svg_path)
             print(f"Processed {filename} into {svg_filename}")
 
-    duration = time.time() - start_time
-    print(f"Total processing time: {duration:.2f} seconds")
+    # duration = time.time() - start_time
+    # print(f"Total processing time: {duration:.2f} seconds")
 
 
-# Example usage
-input_folder = "GCodeGenerator/Assets/Segmented Images/img_5"
-output_folder = "GCodeGenerator/Assets/Vectorized Images/img_5"
-vectorization(input_folder, output_folder)
+# # Example usage
+# input_folder = "MAIN BRAINTER/GCodeGenerator/Assets/Segmented Images/img_5"
+# output_folder = "MAIN BRAINTER/GCodeGenerator/Assets/Vectorized Images/img_5"
+# vectorization(input_folder, output_folder)

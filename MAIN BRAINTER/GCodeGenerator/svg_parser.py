@@ -57,7 +57,6 @@ def process_svg_file(svg_file_path):
 
 
 def process_all_svg_in_folder(folder_path):
-    start_time = time.time()
 
     svg_files = [
         os.path.join(folder_path, f)
@@ -78,15 +77,15 @@ def process_all_svg_in_folder(folder_path):
             except Exception as exc:
                 print(f"{file} generated an exception: {exc}")
 
-    end_time = time.time()
-    print(f"Completed processing all SVGs in {end_time - start_time:.2f} seconds.")
 
-
-def main():
-    # Example usage:
-    folder_path = "GCodeGenerator/Assets/Vectorized Images/img_5"
-    process_all_svg_in_folder(folder_path)
+# def main():
+#     # Example usage:
+#     folder_path = "MAIN BRAINTER/GCodeGenerator/Assets/Vectorized Images/brainter"
+#     process_all_svg_in_folder(folder_path)
 
 
 if __name__ == "__main__":
-    main()
+    vectorization_output_folder = (
+        "MAIN BRAINTER/GCodeGenerator/Assets/Vectorized Images/brainter"
+    )
+    process_all_svg_in_folder(vectorization_output_folder)

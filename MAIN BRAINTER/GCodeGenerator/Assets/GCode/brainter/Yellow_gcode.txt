@@ -1,0 +1,3 @@
+G90 ; Use absolute positioning
+G21 ; Set units to millimeters
+G0 Z1 ; Lift pen

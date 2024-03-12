@@ -14,7 +14,7 @@ def color_segmentation(input_image_path, output_folder, preset_colors, color_nam
     :param color_names: List of names corresponding to each color in the preset.
     """
 
-    start_time = time.time()
+    # start_time = time.time()
 
     def segment_color(image, color):
         mask = cv2.inRange(image, color, color)
@@ -49,8 +49,8 @@ def color_segmentation(input_image_path, output_folder, preset_colors, color_nam
             output_path = os.path.join(output_folder, f"{name}.png")
             cv2.imwrite(output_path, segmented_image)
 
-    end_time = time.time()  # Record the end time
-    print(f"Color segmentation completed in {end_time - start_time:.2f} seconds.")
+    # end_time = time.time()  # Record the end time
+    # print(f"Color segmentation completed in {end_time - start_time:.2f} seconds.")
 
 
 # Preset List of colors from color_quantization.py
@@ -89,14 +89,14 @@ color_names = [
 ]
 
 
-# Example usage
-if __name__ == "__main__":
-    input_image_path = (
-        "GCodeGenerator/Assets/Quantized Images/img_5_quantized_PCA.png"
-    )
-    output_folder = "GCodeGenerator/Assets/Segmented Images/img_5"
+# # Example usage
+# if __name__ == "__main__":
+#     input_image_path = (
+#         "GCodeGenerator/Assets/Quantized Images/img_5_quantized_PCA.png"
+#     )
+#     output_folder = "GCodeGenerator/Assets/Segmented Images/img_5"
 
-    try:
-        color_segmentation(input_image_path, output_folder, preset_colors, color_names)
-    except Exception as e:
-        print("Error:", e)
+#     try:
+#         color_segmentation(input_image_path, output_folder, preset_colors, color_names)
+#     except Exception as e:
+#         print("Error:", e)
