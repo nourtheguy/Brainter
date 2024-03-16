@@ -3,7 +3,9 @@ from GCodeGenerator.color_quantization_PCA import *
 from GCodeGenerator.similarityscore import *
 from GCodeGenerator.emptyfolder import *
 from GCodeGenerator.color_segmentation import *
-from GCodeGenerator.vectorization import *
+
+# from GCodeGenerator.vectorization import *
+from GCodeGenerator.vectorization_findcontours import *
 from GCodeGenerator.svg_parser import *
 from GCodeGenerator.gcode_generation import *
 
@@ -42,6 +44,7 @@ def TopG():
 
     # empty segmentation output folder
     empty_folder(segmentation_output_folder)
+    empty_folder(vectorization_output_folder)
 
     # segmentation based on better method
     if ssim_PCA > ssim_kmeans:
