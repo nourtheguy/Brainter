@@ -82,7 +82,7 @@ color_names = [
     "Purple",
     "Yellow",
     "Orange",
-    "Light Grey",
+    "Lightgrey",
     "Teal",
     "Azure",
     "Pink",
