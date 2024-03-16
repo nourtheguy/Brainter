@@ -78,12 +78,6 @@ def process_all_svg_in_folder(folder_path):
                 print(f"{file} generated an exception: {exc}")
 
 
-# def main():
-#     # Example usage:
-#     folder_path = "MAIN BRAINTER/GCodeGenerator/Assets/Vectorized Images/brainter"
-#     process_all_svg_in_folder(folder_path)
-
-
 if __name__ == "__main__":
     vectorization_output_folder = (
         "MAIN BRAINTER/GCodeGenerator/Assets/Vectorized Images/img_5"
