@@ -70,7 +70,7 @@ def write_combined_gcode(combined_gcode, output_filename):
         file.writelines(combined_gcode)
 
 # Example usage
-folder_path = "MAIN BRAINTER/GCodeGenerator/Assets/GCode/brainter"  # Update this path as needed
-output_filename = 'MAIN BRAINTER/GCodeGenerator/Assets/GCode/brainter/combined_gcode.txt'  # Update this path as needed
+folder_path = "MAIN BRAINTER/GCodeGenerator/Assets/GCode/optimised"  # Update this path as needed
+output_filename = 'MAIN BRAINTER/GCodeGenerator/Assets/GCode/optimised/combined_gcode.txt'  # Update this path as needed
 combined_gcode = combine_gcodes(folder_path, output_filename)
 write_combined_gcode(combined_gcode, output_filename)
