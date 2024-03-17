@@ -14,6 +14,7 @@ def main():
             process_mental_command(file_path)
             print("Finished mental command process.")
             break
+
         elif status == "emotion":
             print("Start emotion color matching process.")
             process_emotion(file_path)

@@ -3,12 +3,10 @@ from GCodeGenerator.color_quantization_PCA import *
 from GCodeGenerator.similarityscore import *
 from GCodeGenerator.emptyfolder import *
 from GCodeGenerator.color_segmentation import *
-
-# from GCodeGenerator.vectorization import *
 from GCodeGenerator.vectorization_findcontours import *
-
-# from GCodeGenerator.svg_parser import *
 from GCodeGenerator.gcode_generation import *
+from GCodeGenerator.gcode_optimization import *
+from GCodeGenerator.colorchangingmechanism import *
 
 input_image_path = "MAIN BRAINTER/GCodeGenerator/Assets/Images/brainter.png"
 output_image_path_kmeans = (
@@ -17,13 +15,10 @@ output_image_path_kmeans = (
 output_image_path_PCA = (
     "MAIN BRAINTER/GCodeGenerator/Assets/Quantized Images/brainter_PCA.png"
 )
-segmentation_output_folder = (
-    "MAIN BRAINTER/GCodeGenerator/Assets/Segmented Images/brainter"
-)
-vectorization_output_folder = (
-    "MAIN BRAINTER/GCodeGenerator/Assets/Vectorized Images/brainter"
-)
-gcode_output_folder = "MAIN BRAINTER/GCodeGenerator/Assets/GCode/brainter"
+segmentation_output_folder = "MAIN BRAINTER/GCodeGenerator/Assets/Segmented Images"
+vectorization_output_folder = "MAIN BRAINTER/GCodeGenerator/Assets/Vectorized Images"
+gcode_output_folder = "MAIN BRAINTER/GCodeGenerator/Assets/GCode"
+gcode_text = "MAIN BRAINTER/GCodeGenerator/Assets/GCode/combined.txt"
 
 
 def TopG():
@@ -43,9 +38,10 @@ def TopG():
     ssim_PCA = structural_sim(original, PCA_image)
     ssim_kmeans = structural_sim(original, Kmeans_image)
 
-    # empty segmentation output folder
+    # empty folders
     empty_folder(segmentation_output_folder)
     empty_folder(vectorization_output_folder)
+    empty_folder(gcode_output_folder)
 
     # segmentation based on better method
     if ssim_PCA > ssim_kmeans:
@@ -69,11 +65,11 @@ def TopG():
     vectorization(segmentation_output_folder, vectorization_output_folder)
     print("Vectorization")
 
-    # gcode generation from filled svgs
-
-    # old using edge detection, then svg manipulation and gcode from lines
-    # # SVG manipulation step
-    # process_all_svg_in_folder(vectorization_output_folder)
-
     # GCode Generation step
     gcode_generation(vectorization_output_folder, gcode_output_folder)
+
+    # GCode Optimization of each gcode text file
+    gcode_optimization(gcode_output_folder, gcode_output_folder)
+
+    # Color changing mechanism & combining gcode
+    write_combined_gcode(combine_gcode(gcode_output_folder), gcode_text)
