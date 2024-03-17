@@ -63,19 +63,49 @@ def parse_gcode(gcode_lines):
     return commands
 
 
-# Generate optimized G-code from the optimized order
+# Helper function to merge consecutive lines with the same Y ordinate and X ordinates separated by 1
+def merge_consecutive_lines(lines):
+    merged_lines = []
+    i = 0
+    while i < len(lines):
+        current_line = lines[i]
+        # As long as there is a next line that can be merged with the current one, do so.
+        while (
+            i + 1 < len(lines)
+            and current_line["end_pos"][1] == lines[i + 1]["start_pos"][1]
+            and abs(current_line["end_pos"][0] - lines[i + 1]["start_pos"][0]) <= 1
+        ):
+            # Merge current line with the next one
+            next_line = lines[i + 1]
+            current_line = {
+                "start_pos": current_line["start_pos"],
+                "end_pos": next_line["end_pos"],
+            }
+            i += 1
+        merged_lines.append(current_line)
+        i += 1
+    return merged_lines
+
+
+# Update the generate_optimized_gcode function to use merge_consecutive_lines
 def generate_optimized_gcode(optimized_order):
     optimized_gcode = [
         "G90 ; Use absolute positioning",
         "G21 ; Set units to millimeters",
     ]
-    for line in optimized_order:
+    # Merge consecutive lines before generating G-code
+    merged_lines = merge_consecutive_lines(optimized_order)
+    for line in merged_lines:
         start_pos = line["start_pos"]
         end_pos = line["end_pos"]
-        optimized_gcode.append(f"G0 Z1 ; Lift pen")
-        optimized_gcode.append(f"G0 X{start_pos[0]} Y{start_pos[1]} ; Move to start")
-        optimized_gcode.append("G0 Z0 ; Lower pen")
-        optimized_gcode.append(f"G1 X{end_pos[0]} Y{end_pos[1]} ; Draw line")
+        # Only lift and lower the pen if moving to a new start position
+        if start_pos != end_pos:  # Check if it's not a redundant move
+            optimized_gcode.append(f"G0 Z1 ; Lift pen")
+            optimized_gcode.append(
+                f"G0 X{start_pos[0]} Y{start_pos[1]} ; Move to start"
+            )
+            optimized_gcode.append("G0 Z0 ; Lower pen")
+            optimized_gcode.append(f"G1 X{end_pos[0]} Y{end_pos[1]} ; Draw line")
     optimized_gcode.append("G0 Z1 ; Lift pen")  # Lift pen after finishing
     return optimized_gcode
 

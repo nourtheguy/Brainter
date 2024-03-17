@@ -10,7 +10,6 @@ import io
 import pandas as pd
 import requests
 import datetime
-import time
 from openai import OpenAI
 from pathlib import Path
 
@@ -148,7 +147,7 @@ def generate_and_save_image(
     client, prompt_text, size_value, model="dall-e-2", quality_value="standard"
 ):
     start_time = time.time()
-    print(f"we will be generating the following prompt : {prompt_text}")
+    print(f"Generating the following prompt: {prompt_text}")
     save_dir = "MAIN BRAINTER/GCodeGenerator/Assets/Images"
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)

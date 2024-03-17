@@ -4,6 +4,7 @@ from GCodeGenerator.similarityscore import *
 from GCodeGenerator.emptyfolder import *
 from GCodeGenerator.color_segmentation import *
 from GCodeGenerator.vectorization_findcontours import *
+from GCodeGenerator.svg_parser import *
 from GCodeGenerator.gcode_generation import *
 from GCodeGenerator.gcode_optimization import *
 from GCodeGenerator.colorchangingmechanism import *
@@ -64,6 +65,9 @@ def TopG():
     # vectorization step
     vectorization(segmentation_output_folder, vectorization_output_folder)
     print("Vectorization")
+
+    # SVG Manipulation Step
+    # process_svg_files(vectorization_output_folder)
 
     # GCode Generation step
     gcode_generation(vectorization_output_folder, gcode_output_folder)

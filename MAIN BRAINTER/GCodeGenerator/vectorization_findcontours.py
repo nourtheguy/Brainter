@@ -17,7 +17,7 @@ def vectorization(input_folder, output_folder, line_spacing=1, line_thickness=1)
     - line_thickness: The thickness of the lines used to fill the shapes.
     """
 
-    def process_image(image_path, svg_path, line_spacing=1, line_thickness=1):
+    def process_image(image_path, svg_path, line_spacing=2, line_thickness=2):
         img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
         _, thresh = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
         contours, _ = cv2.findContours(
