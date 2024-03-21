@@ -1,0 +1,1243 @@
+G90 ; Use absolute positioning
+G21 ; Set units to millimeters
+G0 Z1 ; Lift pen
+G0 X187.0 Y79.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X205.0 Y79.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X203.0 Y77.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X205.0 Y77.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X205.0 Y75.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X207.0 Y75.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X205.0 Y73.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X207.0 Y73.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X205.0 Y71.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X207.0 Y71.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X207.0 Y69.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X209.0 Y69.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X207.0 Y67.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X209.0 Y67.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X209.0 Y65.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X211.0 Y65.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X211.0 Y63.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X213.0 Y63.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X211.0 Y61.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X213.0 Y61.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X213.0 Y59.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X215.0 Y59.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X215.0 Y57.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X217.0 Y57.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X217.0 Y55.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X219.0 Y55.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X221.0 Y53.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X226.0 Y53.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X228.0 Y52.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X230.0 Y52.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X228.0 Y55.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X230.0 Y55.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X236.0 Y53.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X238.0 Y53.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X238.0 Y55.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X244.0 Y55.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X244.0 Y57.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X248.0 Y57.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y59.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y59.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y61.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y61.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y63.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y63.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y65.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y65.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y65.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y65.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y63.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y63.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y63.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y63.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y61.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y61.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X246.0 Y59.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X248.0 Y59.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X242.0 Y57.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X244.0 Y57.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X215.0 Y55.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X217.0 Y55.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X213.0 Y55.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X215.0 Y55.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X213.0 Y53.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X215.0 Y53.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X211.0 Y55.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X213.0 Y55.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X213.0 Y57.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X215.0 Y57.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X211.0 Y57.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X213.0 Y57.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X211.0 Y59.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X213.0 Y59.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X209.0 Y59.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X211.0 Y59.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X209.0 Y57.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X211.0 Y57.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X207.0 Y57.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X209.0 Y57.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X207.0 Y59.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X209.0 Y59.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X209.0 Y61.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X211.0 Y61.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X209.0 Y63.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X211.0 Y63.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X207.0 Y63.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X209.0 Y63.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X207.0 Y61.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X209.0 Y61.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X205.0 Y61.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X207.0 Y61.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X205.0 Y59.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X207.0 Y59.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X203.0 Y61.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X205.0 Y61.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X205.0 Y63.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X207.0 Y63.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X207.0 Y65.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X209.0 Y65.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X205.0 Y65.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X207.0 Y65.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X205.0 Y67.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X207.0 Y67.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X205.0 Y69.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X207.0 Y69.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X203.0 Y69.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X205.0 Y69.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X203.0 Y67.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X205.0 Y67.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X203.0 Y65.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X205.0 Y65.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X203.0 Y63.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X205.0 Y63.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y63.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y63.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y61.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y61.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y63.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y63.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y65.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y65.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y67.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y67.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y69.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y69.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X203.0 Y71.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X205.0 Y71.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X203.0 Y73.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X205.0 Y73.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X203.0 Y75.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X205.0 Y75.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y75.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y75.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y73.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y73.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y71.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y71.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y71.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y71.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y69.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y69.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y67.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y67.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y65.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y65.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y65.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y65.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y67.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y67.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y69.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y69.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y71.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y71.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y73.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y73.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y75.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y75.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y77.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y77.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y77.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y77.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y77.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y77.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y75.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y75.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y73.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y73.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y73.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y73.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y71.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y71.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y69.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y69.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y67.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y67.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y69.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y69.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y71.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y71.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y73.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y73.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y75.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y75.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y77.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y77.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y77.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y77.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y75.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y75.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X191.0 Y75.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X193.0 Y75.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X191.0 Y77.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X193.0 Y77.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X189.0 Y77.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X191.0 Y77.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X191.0 Y81.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y81.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y83.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y83.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y85.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y85.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y87.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y87.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y87.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y87.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y85.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y85.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y83.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y83.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y83.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y83.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y85.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y85.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y87.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y87.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y89.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y89.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y91.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y91.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X202.0 Y93.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X204.0 Y93.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X204.0 Y92.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X206.0 Y92.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y93.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y93.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y95.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y95.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y97.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y97.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y99.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y99.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y101.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y101.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y103.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y103.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y105.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y105.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y107.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y107.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X199.0 Y109.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X201.0 Y109.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X201.0 Y113.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X203.0 Y113.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X202.0 Y115.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X204.0 Y115.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X202.0 Y117.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X204.0 Y117.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X205.0 Y123.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X207.0 Y123.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X208.0 Y122.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X210.0 Y122.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X215.0 Y133.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X219.0 Y133.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X219.0 Y135.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X223.0 Y135.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X219.0 Y137.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X221.0 Y137.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X217.0 Y137.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X219.0 Y137.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X217.0 Y135.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X219.0 Y135.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X215.0 Y137.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X217.0 Y137.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X224.0 Y142.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X226.0 Y142.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X226.0 Y140.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X228.0 Y140.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X228.0 Y138.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X230.0 Y138.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X230.0 Y136.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X232.0 Y136.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X234.0 Y134.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X236.0 Y134.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X236.0 Y132.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X240.0 Y132.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X242.0 Y127.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X244.0 Y127.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y127.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y127.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y134.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y134.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y136.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y136.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y138.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y138.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y140.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y140.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y142.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y142.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y144.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y144.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y146.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y146.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y148.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y148.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y150.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y150.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y152.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y152.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y154.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y154.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y156.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y156.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y158.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y158.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y158.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y158.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y156.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y156.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y154.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y154.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y152.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y152.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y150.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y150.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y148.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y148.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y146.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y146.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y144.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y144.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y142.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y142.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y140.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y140.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y138.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y138.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y136.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y136.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y146.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y146.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y152.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y152.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y154.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y154.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y156.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y156.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y158.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y158.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y160.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y160.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y162.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y162.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y164.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y164.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y166.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y166.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y168.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y168.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y170.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y170.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y172.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y172.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y174.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y174.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y176.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y176.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y178.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y178.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y180.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y180.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y182.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y182.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y184.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y184.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y186.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y186.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y188.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y188.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y190.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y190.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y190.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y190.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y188.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y188.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y186.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y186.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y184.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y184.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y182.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y182.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y180.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y180.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y178.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y178.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y176.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y176.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y174.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y174.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y172.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y172.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y168.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y168.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y166.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y166.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y164.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y164.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y164.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y164.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y162.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y162.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y160.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y160.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y166.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y166.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y168.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y168.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y174.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y174.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y176.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y176.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y178.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y178.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y180.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y180.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y182.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y182.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y184.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y184.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y186.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y186.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y188.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y188.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y190.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y190.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y190.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y190.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y188.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y188.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y186.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y186.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y184.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y184.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y182.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y182.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y180.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y180.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y178.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y178.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y176.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y176.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y192.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y192.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y194.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y194.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y196.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y196.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y198.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y198.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y200.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y200.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y202.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y202.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X249.0 Y206.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X251.0 Y206.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X249.0 Y208.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X251.0 Y208.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X249.0 Y210.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X251.0 Y210.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y213.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y213.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X249.0 Y215.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X251.0 Y215.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X248.0 Y217.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X250.0 Y217.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y219.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y219.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y221.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y221.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X254.0 Y223.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X256.0 Y223.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X252.0 Y223.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X254.0 Y223.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X250.0 Y221.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X252.0 Y221.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X247.0 Y215.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X249.0 Y215.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X218.0 Y203.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X220.0 Y203.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X214.0 Y197.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X216.0 Y197.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X212.0 Y193.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X214.0 Y193.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X211.0 Y191.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X213.0 Y191.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X209.0 Y184.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X211.0 Y184.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X209.0 Y182.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X211.0 Y182.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X209.0 Y171.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X211.0 Y171.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X210.0 Y166.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X212.0 Y166.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X211.0 Y163.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X213.0 Y163.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X213.0 Y158.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X215.0 Y158.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X213.0 Y156.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X215.0 Y156.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X215.0 Y154.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X217.0 Y154.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X218.0 Y149.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X220.0 Y149.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X220.0 Y146.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X222.0 Y146.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X222.0 Y144.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X224.0 Y144.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X230.0 Y132.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X232.0 Y132.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X234.0 Y132.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X236.0 Y132.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X243.0 Y117.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X245.0 Y117.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y107.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y107.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y105.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y105.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y103.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y103.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y101.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y101.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y99.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y99.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y97.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y97.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y95.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y95.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y93.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y93.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y91.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y91.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X197.0 Y89.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X199.0 Y89.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y89.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y89.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y87.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y87.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y85.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y85.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y83.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y83.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y83.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y83.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y85.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y85.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y87.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y87.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y89.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y89.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y91.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y91.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y93.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y93.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y95.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y95.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y97.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y97.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y99.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y99.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y101.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y101.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X195.0 Y103.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X197.0 Y103.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y103.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y103.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y101.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y101.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y99.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y99.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y97.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y97.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y95.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y95.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y93.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y93.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X193.0 Y91.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X195.0 Y91.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X191.0 Y91.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X193.0 Y91.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X191.0 Y89.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X193.0 Y89.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X191.0 Y87.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X193.0 Y87.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X191.0 Y85.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X193.0 Y85.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X191.0 Y83.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X193.0 Y83.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X189.0 Y83.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X191.0 Y83.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X189.0 Y81.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X191.0 Y81.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X187.0 Y82.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X189.0 Y82.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X189.0 Y85.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X191.0 Y85.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X189.0 Y87.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X191.0 Y87.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X189.0 Y89.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X191.0 Y89.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X189.0 Y91.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X191.0 Y91.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X191.0 Y93.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X193.0 Y93.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X191.0 Y95.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X193.0 Y95.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X191.0 Y97.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X193.0 Y97.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X184.0 Y92.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X186.0 Y92.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X185.0 Y86.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X187.0 Y86.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X186.0 Y84.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X188.0 Y84.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X184.0 Y104.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X186.0 Y104.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X185.0 Y108.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X187.0 Y108.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X186.0 Y111.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X188.0 Y111.0 ; Draw line
+G0 Z1 ; Lift pen
+G0 X187.0 Y113.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X189.0 Y113.0 ; Draw line
+G0 Z1 ; Lift pen

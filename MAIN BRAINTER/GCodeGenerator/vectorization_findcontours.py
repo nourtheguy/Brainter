@@ -58,7 +58,7 @@ def vectorization(input_folder, output_folder, line_spacing=1, line_thickness=1)
             print(f"Processed {filename} into {svg_filename}")
 
 
-# # Example usage
-# input_folder = "MAIN BRAINTER/GCodeGenerator/Assets/Segmented Images/img_5"
-# output_folder = "MAIN BRAINTER/GCodeGenerator/Assets/Vectorized Images/img_5_contour"
+# Example usage
+# input_folder = "MAIN BRAINTER/GCodeGenerator/Assets/Segmented Images"
+# output_folder = "MAIN BRAINTER/GCodeGenerator/Assets/Vectorized Images"
 # vectorization(input_folder, output_folder)
