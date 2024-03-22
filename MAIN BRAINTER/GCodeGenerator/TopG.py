@@ -77,3 +77,7 @@ def TopG():
 
     # Color changing mechanism & combining gcode
     write_combined_gcode(combine_gcode(gcode_output_folder), gcode_text)
+
+
+if __name__ == "__main__":
+    main()
