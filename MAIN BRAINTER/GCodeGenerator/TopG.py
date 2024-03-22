@@ -1,3 +1,4 @@
+from GCodeGenerator.image_resizer import *
 from GCodeGenerator.color_quantization_kmeans import *
 from GCodeGenerator.color_quantization_PCA import *
 from GCodeGenerator.similarityscore import *
@@ -23,6 +24,8 @@ gcode_text = "MAIN BRAINTER/GCodeGenerator/Assets/GCode/combined.txt"
 
 
 def TopG():
+
+    resize_image(input_image_path, input_image_path)
 
     # Quantize the received image using kmeans and PCA
     color_quantization_kmeans(input_image_path, output_image_path_kmeans, preset_colors)
@@ -67,7 +70,7 @@ def TopG():
     print("Vectorization")
 
     # SVG Manipulation Step
-    #restructure_gcode(vectorization_output_folder)
+    # restructure_gcode(vectorization_output_folder)
 
     # GCode Generation step
     gcode_generation(vectorization_output_folder, gcode_output_folder)
@@ -77,7 +80,3 @@ def TopG():
 
     # Color changing mechanism & combining gcode
     write_combined_gcode(combine_gcode(gcode_output_folder), gcode_text)
-
-
-if __name__ == "__main__":
-    main()
