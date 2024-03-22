@@ -67,7 +67,7 @@ def TopG():
     print("Vectorization")
 
     # SVG Manipulation Step
-    # process_svg_files(vectorization_output_folder)
+    #restructure_gcode(vectorization_output_folder)
 
     # GCode Generation step
     gcode_generation(vectorization_output_folder, gcode_output_folder)

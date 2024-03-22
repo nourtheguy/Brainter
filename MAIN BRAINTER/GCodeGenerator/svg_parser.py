@@ -42,7 +42,7 @@ def combine_lines(svg_content):
     return ET.tostring(root, encoding="unicode")
 
 
-def process_svg_files(folder_path):
+def restructure_gcode(folder_path):
     for filename in os.listdir(folder_path):
         if filename.endswith(".svg"):
             file_path = os.path.join(folder_path, filename)
