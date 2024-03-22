@@ -1,6 +1,6 @@
 import os
 
-# Define the mapping of color names to Y-axis coordinates
+# Mapping from color names to their corresponding Y-axis positions on the pen holder
 color_to_y_position = {
     "Black": 0,
     "Grey": 10,
@@ -19,11 +19,30 @@ color_to_y_position = {
 
 
 def read_gcode_file(filename):
+    """
+    Reads a G-code file and returns its lines as a list.
+
+    Parameters:
+    - filename: The path to the G-code file to read.
+
+    Returns:
+    - A list of strings, each representing a line in the G-code file.
+    """
     with open(filename, "r") as file:
         return file.readlines()
 
 
 def generate_pen_pickup_gcode(pen_y_position, lift_pen_height=1):
+    """
+    Generates G-code commands to pick up a pen from the specified Y-axis position.
+
+    Parameters:
+    - pen_y_position: The Y-axis position of the pen to pick up.
+    - lift_pen_height: How high to lift the pen after picking it up.
+
+    Returns:
+    - A list of G-code commands as strings.
+    """
     return [
         "G0 X1 Y0 ; Start position\n",
         f"G0 Y{pen_y_position} ; Align with pen's Y-axis at X=1\n",
@@ -35,6 +54,16 @@ def generate_pen_pickup_gcode(pen_y_position, lift_pen_height=1):
 
 
 def generate_pen_return_gcode(pen_y_position, lift_pen_height=1):
+    """
+    Generates G-code commands to return a pen to the specified Y-axis position.
+
+    Parameters:
+    - pen_y_position: The Y-axis position where the pen should be returned.
+    - lift_pen_height: How high to lift the pen before returning it.
+
+    Returns:
+    - A list of G-code commands as strings.
+    """
     return [
         f"G0 Z{lift_pen_height} ; Lift pen\n",
         f"G0 Y{pen_y_position} ; Align with pen's Y-axis at X=1\n",
@@ -46,6 +75,16 @@ def generate_pen_return_gcode(pen_y_position, lift_pen_height=1):
 
 
 def combine_gcode(folder_path, lift_pen_height=1):
+    """
+    Combines G-code files from a directory, adding commands to pick up and return pens as needed.
+
+    Parameters:
+    - folder_path: The path to the directory containing the G-code files.
+    - lift_pen_height: How high to lift the pen after each pick-up or return.
+
+    Returns:
+    - A list of combined G-code commands as strings.
+    """
     combined_gcode = ["G0 X1 Y0 ; Initial machine start position\n"]
     sorted_files = [
         f

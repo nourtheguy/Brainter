@@ -12,31 +12,75 @@ def color_quantization_kmeans(
     max_image_size=1024,
 ):
     """
-    Function to apply color quantization to an image.
+    This function applies color quantization to an image using K-means clustering.
+    It first reduces the number of colors to a specified number of clusters and then maps
+    these colors to a set of preset colors. The quantized image is then saved to a file.
 
-    :param input_image_path: Path to the input image.
-    :param output_image_path: Path where the quantized image will be saved.
-    :param preset_colors: Array of RGB values of the preset colors.
-    :param num_clusters: Number of clusters for K-means.
-    :param max_image_size: Maximum size to which the image is resized.
+    Parameters:
+    - input_image_path: Path to the input image file.
+    - output_image_path: Path where the quantized image will be saved.
+    - preset_colors: Array of RGB values representing the preset colors to map the image colors to.
+    - num_clusters: The number of clusters to use for K-means clustering.
+    - max_image_size: The maximum size (width or height) to which the image will be resized, to speed up processing.
     """
 
     def find_closest_color(pixel, colors):
+        """
+        Finds the closest color to a given pixel from a list of colors.
+
+        Parameters:
+        - pixel: The RGB values of the pixel.
+        - colors: An array of RGB colors to find the closest color from.
+
+        Returns:
+        - The RGB values of the closest color found.
+        """
         distances = np.sqrt(np.sum((colors - pixel) ** 2, axis=1))
         return colors[np.argmin(distances)]
 
     def k_means_cluster_colors(image, num_clusters):
+        """
+        Applies K-means clustering to reduce the number of colors in the image.
+
+        Parameters:
+        - image: The input image as a numpy array.
+        - num_clusters: The number of clusters to use for the K-means algorithm.
+
+        Returns:
+        - An array of RGB values representing the centroids of the clusters.
+        """
         pixels = image.reshape((-1, 3))
         kmeans = KMeans(n_clusters=num_clusters)
         kmeans.fit(pixels)
         return kmeans.cluster_centers_.astype(int)
 
     def map_clusters_to_preset(centroids, preset_colors):
+        """
+        Maps the cluster centroids to the closest preset color.
+
+        Parameters:
+        - centroids: The centroids of the clusters as RGB values.
+        - preset_colors: The preset colors to map the centroids to.
+
+        Returns:
+        - An array of RGB values where each centroid is replaced by the closest preset color.
+        """
         return np.array(
             [find_closest_color(centroid, preset_colors) for centroid in centroids]
         )
 
     def replace_colors(image, centroids, mapped_colors):
+        """
+        Replaces the colors in the original image with the mapped preset colors.
+
+        Parameters:
+        - image: The original image.
+        - centroids: The centroids of the clusters.
+        - mapped_colors: The preset colors mapped from the centroids.
+
+        Returns:
+        - The image with colors replaced by the closest mapped preset colors.
+        """
         new_image = np.zeros_like(image)
         for i in range(image.shape[0]):
             for j in range(image.shape[1]):
