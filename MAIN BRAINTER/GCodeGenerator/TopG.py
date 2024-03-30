@@ -9,6 +9,7 @@ from GCodeGenerator.svg_parser import *
 from GCodeGenerator.gcode_generation import *
 from GCodeGenerator.gcode_optimization import *
 from GCodeGenerator.colorchangingmechanism import *
+from GCodeGenerator.send_gcode import *
 
 input_image_path = "MAIN BRAINTER/GCodeGenerator/Assets/Images/brainter.png"
 output_image_path_kmeans = (
@@ -80,3 +81,5 @@ def TopG():
 
     # Color changing mechanism & combining gcode
     write_combined_gcode(combine_gcode(gcode_output_folder), gcode_text)
+
+    start_automation(gcode_text)
