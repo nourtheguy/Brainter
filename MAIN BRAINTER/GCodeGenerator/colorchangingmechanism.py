@@ -2,19 +2,19 @@ import os
 
 # Mapping from color names to their corresponding Y-axis positions on the pen holder
 color_to_y_position = {
-    "Black": 0,
-    "Grey": 10,
-    "Red": 20,
-    "Green": 30,
-    "Blue": 40,
-    "Cyan": 50,
-    "Purple": 60,
-    "Yellow": 70,
-    "Orange": 80,
-    "Lightgrey": 90,
-    "Teal": 100,
-    "Azure": 110,
-    "Pink": 120,
+    "Black": 10,
+    "Grey": 33,
+    "Red": 53,
+    "Green": 73,
+    "Blue": 10,
+    "Cyan": 33,
+    "Purple": 53,
+    "Yellow": 73,
+    "Orange": 10,
+    "Lightgrey": 33,
+    "Teal": 53,
+    "Azure": 73,
+    "Pink": 10,
 }
 
 
@@ -32,7 +32,7 @@ def read_gcode_file(filename):
         return file.readlines()
 
 
-def generate_pen_pickup_gcode(pen_y_position, lift_pen_height=1):
+def generate_pen_pickup_gcode(pen_y_position, lift_pen_height=20):
     """
     Generates G-code commands to pick up a pen from the specified Y-axis position.
 
@@ -44,16 +44,17 @@ def generate_pen_pickup_gcode(pen_y_position, lift_pen_height=1):
     - A list of G-code commands as strings.
     """
     return [
-        "G0 X0 Y288 ; Start position\n",
-        f"G0 X{pen_y_position} ; Align with pen's Y-axis at X=1\n",
-        "G0 Y290 ; Move to pen\n",
-        "G0 Z0 ; Lower pen to pick up\n",
-        f"G0 Z{lift_pen_height} ; Lift pen\n",
-        "G0 Y288 ; Move back to start drawing position\n",
+        "M3 S100; open servo\n",
+        "G1 Y260 ; align with pen's Y-axis\n",
+        f"G1 X{pen_y_position} ; Align with pen's Y-axis at X=1\n",
+        "G1 Y275; behind the pen\n",
+        "M3 S20; close servo\n",
+        f"G0 Z20 ; Lift pen\n",
+        "G1 Y260 ; move back\n",
     ]
 
 
-def generate_pen_return_gcode(pen_y_position, lift_pen_height=1):
+def generate_pen_return_gcode(pen_y_position, lift_pen_height=20):
     """
     Generates G-code commands to return a pen to the specified Y-axis position.
 
@@ -65,12 +66,13 @@ def generate_pen_return_gcode(pen_y_position, lift_pen_height=1):
     - A list of G-code commands as strings.
     """
     return [
-        f"G0 Z{lift_pen_height} ; Lift pen\n",
+        f"G0 Z20 ; Lift pen\n",
+        "G1 Y260 ; align with pen's Y-axis\n",
         f"G0 X{pen_y_position} ; Align with pen's Y-axis at X=1\n",
-        "G0 Y290 ; Move to place pen back\n",
+        "G1 Y275; behind the pen\n",
         "G0 Z0 ; Lower pen to place back\n",
-        f"G0 Z{lift_pen_height} ; Lift pen\n",
-        "G0 Y288 ; Return to intermediate position\n",
+        "M3 S100; open servo\n",
+        "G1 Y260 ; move back\n",
     ]
 
 
@@ -90,9 +92,8 @@ def combine_gcode(folder_path, lift_pen_height=1):
         "G90 ; absolute coordinate\n",
         "G17 ; XY plane\n",
         "G94 ; units per minute feed rate mode\n",
-        "M3 S1000 ; Turning on spindle\n",
-        "G0 X0 Y0 ; Initial machine start position\n",
-        "F3000\n",
+        "G0 X2 Y10 ; Initial machine start position\n",
+        "F1000\n",
     ]
     sorted_files = [
         f
@@ -134,7 +135,7 @@ def combine_gcode(folder_path, lift_pen_height=1):
                 print(
                     f"Color '{color_name}' not recognized. Skipping file '{filename}'."
                 )
-    combined_gcode.append("G0 X0 Y0 ; Initial machine start position\n")
+    combined_gcode.append("G0 X2 Y10  ; Initial machine start position\n")
     combined_gcode.append("M5 ; Turning off spindle \n")
     return combined_gcode
 
