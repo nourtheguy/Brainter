@@ -1,3 +1,11 @@
 G90 ; Use absolute positioning
 G21 ; Set units to millimeters
 G0 Z20 ; Lift pen
+G0 X20.0 Y65.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X21.0 Y65.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X21.0 Y101.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X27.0 Y101.0 ; Draw line
+G0 Z20 ; Lift pen

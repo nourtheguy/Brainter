@@ -14,12 +14,13 @@ def gcode_generation(input_directory, output_directory):
 
     def svg_to_gcode(lines):
         gcode = ["G90 ; Use absolute positioning", "G21 ; Set units to millimeters"]
+        offset_y = 58  # Define the Y offset
         for line in lines:
             x1, y1, x2, y2 = (
                 line.get("x1"),
-                line.get("y1"),
+                str(float(line.get("y1")) + offset_y),  # Apply Y offset to y1
                 line.get("x2"),
-                line.get("y2"),
+                str(float(line.get("y2")) + offset_y),  # Apply Y offset to y2
             )
             gcode += [
                 "G0 Z20 ; Lift pen",

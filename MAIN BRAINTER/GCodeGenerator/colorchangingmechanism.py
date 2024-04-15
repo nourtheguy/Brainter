@@ -101,19 +101,25 @@ def combine_gcode(folder_path, lift_pen_height=1):
         # if f != os.path.basename(output_filename)
     ]
 
-    for i, filename in enumerate(sorted_files):
+    for filename in sorted_files:
+        # Ignore the specific file "Lightgrey_gcode.txt"
+        if filename == "Lightgrey_gcode.txt":
+            continue
+
         if filename.endswith("_gcode.txt"):
             color_name = filename.split("_")[0].capitalize()
             if color_name in color_to_y_position:
                 pen_y_position = color_to_y_position[color_name]
-                if i == 0:  # For the first pen, directly pick it up
+                if not hasattr(combine_gcode, "previous_pen_y_position"):
+                    # For the first pen, directly pick it up
                     combined_gcode.extend(
                         generate_pen_pickup_gcode(pen_y_position, lift_pen_height)
                     )
-                else:  # Return the previous pen and pick the next one
+                else:
+                    # Return the previous pen and pick the next one
                     combined_gcode.extend(
                         generate_pen_return_gcode(
-                            previous_pen_y_position, lift_pen_height
+                            combine_gcode.previous_pen_y_position, lift_pen_height
                         )
                     )
                     combined_gcode.extend(
@@ -123,11 +129,11 @@ def combine_gcode(folder_path, lift_pen_height=1):
                 combined_gcode.extend(
                     read_gcode_file(os.path.join(folder_path, filename))
                 )
-                previous_pen_y_position = (
-                    pen_y_position  # Save the Y position for the next iteration
-                )
+                combine_gcode.previous_pen_y_position = pen_y_position
 
-                if i == len(sorted_files) - 1:  # After the last drawing, return the pen
+                if (
+                    filename == sorted_files[-1]
+                ):  # After the last drawing, return the pen
                     combined_gcode.extend(
                         generate_pen_return_gcode(pen_y_position, lift_pen_height)
                     )
