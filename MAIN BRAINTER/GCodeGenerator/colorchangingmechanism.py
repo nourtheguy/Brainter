@@ -103,7 +103,7 @@ def combine_gcode(folder_path, lift_pen_height=1):
 
     for filename in sorted_files:
         # Ignore the specific file "Lightgrey_gcode.txt"
-        if filename == "Lightgrey_gcode.txt":
+        if filename in ["Lightgrey_gcode.txt","Grey_gcode.txt","Pink_gcode.txt", "Yellow_gcode.txt"]:
             continue
 
         if filename.endswith("_gcode.txt"):

@@ -1,0 +1,67 @@
+G90 ; Use absolute positioning
+G21 ; Set units to millimeters
+G0 Z20 ; Lift pen
+G0 X25.0 Y77.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X43.0 Y77.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X59.0 Y76.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X78.0 Y76.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X95.0 Y75.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X114.0 Y75.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X87.0 Y111.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X92.0 Y111.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X78.0 Y130.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X79.0 Y130.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X56.0 Y116.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X58.0 Y116.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X68.0 Y158.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X73.0 Y158.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X79.0 Y157.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X80.0 Y157.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X84.0 Y169.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X85.0 Y169.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X78.0 Y170.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X79.0 Y170.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X69.0 Y170.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X70.0 Y170.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X63.0 Y169.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X64.0 Y169.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X79.0 Y186.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X98.0 Y186.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X111.0 Y185.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X127.0 Y185.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X47.0 Y187.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X65.0 Y187.0 ; Draw line
+G0 Z20 ; Lift pen
+G0 X28.0 Y188.0 ; Move to start
+G0 Z0 ; Lower pen
+G1 X31.0 Y188.0 ; Draw line
+G0 Z20 ; Lift pen
