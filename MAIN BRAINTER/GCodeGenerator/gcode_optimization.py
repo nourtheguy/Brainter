@@ -100,13 +100,13 @@ def generate_optimized_gcode(optimized_order):
         end_pos = line["end_pos"]
         # Only lift and lower the pen if moving to a new start position
         if start_pos != end_pos:  # Check if it's not a redundant move
-            optimized_gcode.append(f"G0 Z20 ; Lift pen")
+            optimized_gcode.append(f"G0 Z50 ; Lift pen")
             optimized_gcode.append(
                 f"G0 X{start_pos[0]} Y{start_pos[1]} ; Move to start"
             )
             optimized_gcode.append("G0 Z0 ; Lower pen")
             optimized_gcode.append(f"G1 X{end_pos[0]} Y{end_pos[1]} ; Draw line")
-    optimized_gcode.append("G0 Z20 ; Lift pen")  # Lift pen after finishing
+    optimized_gcode.append("G0 Z50 ; Lift pen")  # Lift pen after finishing
     return optimized_gcode
 
 

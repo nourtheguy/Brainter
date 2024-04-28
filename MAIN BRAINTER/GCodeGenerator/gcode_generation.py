@@ -23,12 +23,12 @@ def gcode_generation(input_directory, output_directory):
                 str(float(line.get("y2")) + offset_y),  # Apply Y offset to y2
             )
             gcode += [
-                "G0 Z20 ; Lift pen",
+                "G0 Z50 ; Lift pen",
                 f"G0 X{x1} Y{y1} ; Move to start",
                 "G0 Z0 ; Lower pen",
                 f"G1 X{x2} Y{y2} ; Draw line",
             ]
-        gcode.append("G0 Z20 ; Lift pen")
+        gcode.append("G0 Z50 ; Lift pen")
         return gcode
 
     def generate_gcode_for_svg(svg_file_path, output_directory):

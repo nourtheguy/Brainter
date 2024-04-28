@@ -6,15 +6,15 @@ color_to_y_position = {
     "Grey": 33,
     "Red": 82,
     "Green": 18,
-    "Blue": 10,
+    "Blue": 126,
     "Cyan": 61,
     "Purple": -3.5,
-    "Yellow": 73,
-    "Orange": 39,
+    "Yellow": 39,
+    "Orange": 166,
     "Lightgrey": 33,
     "Teal": 53,
-    "Azure": 73,
-    "Pink": 10,
+    "Azure": 105,
+    "Pink": 148,
 }
 
 
@@ -45,12 +45,12 @@ def generate_pen_pickup_gcode(pen_y_position, lift_pen_height=20):
     """
     return [
         "M3 S100; open servo\n",
-        "G1 Y260 ; align with pen's Y-axis\n",
+        "G1 Y275 ; align with pen's Y-axis\n",
         f"G1 X{pen_y_position} ; Align with pen's Y-axis at X=1\n",
-        "G1 Y275; behind the pen\n",
+        "G1 Y280; behind the pen\n",
         "M3 S20; close servo\n",
-        f"G0 Z20 ; Lift pen\n",
-        "G1 Y260 ; move back\n",
+        f"G0 Z50 ; Lift pen\n",
+        "G1 Y275 ; move back\n",
     ]
 
 
@@ -66,13 +66,13 @@ def generate_pen_return_gcode(pen_y_position, lift_pen_height=20):
     - A list of G-code commands as strings.
     """
     return [
-        f"G0 Z20 ; Lift pen\n",
-        "G1 Y260 ; align with pen's Y-axis\n",
+        f"G0 Z50 ; Lift pen\n",
+        "G1 Y275 ; align with pen's Y-axis\n",
         f"G0 X{pen_y_position} ; Align with pen's Y-axis at X=1\n",
-        "G1 Y275; behind the pen\n",
+        "G1 Y280; behind the pen\n",
         "G0 Z0 ; Lower pen to place back\n",
         "M3 S100; open servo\n",
-        "G1 Y260 ; move back\n",
+        "G1 Y275 ; move back\n",
     ]
 
 
@@ -103,7 +103,7 @@ def combine_gcode(folder_path, lift_pen_height=1):
 
     for filename in sorted_files:
         # Ignore the specific file "Lightgrey_gcode.txt"
-        if filename in ["Lightgrey_gcode.txt","Grey_gcode.txt","Pink_gcode.txt", "Yellow_gcode.txt"]:
+        if filename in ["Lightgrey_gcode.txt","Grey_gcode.txt","Teal_gcode.txt"]:
             continue
 
         if filename.endswith("_gcode.txt"):
