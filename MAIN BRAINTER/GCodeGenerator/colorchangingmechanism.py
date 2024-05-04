@@ -45,12 +45,12 @@ def generate_pen_pickup_gcode(pen_y_position, lift_pen_height=20):
     """
     return [
         "M3 S100; open servo\n",
-        "G1 Y275 ; align with pen's Y-axis\n",
+        "G1 Y260; align with pen's Y-axis\n",
         f"G1 X{pen_y_position} ; Align with pen's Y-axis at X=1\n",
-        "G1 Y280; behind the pen\n",
+        "G1 Y284; behind the pen\n",
         "M3 S20; close servo\n",
         f"G0 Z40 ; Lift pen\n",
-        "G1 Y275 ; move back\n",
+        "G1 Y284 ; move back\n",
     ]
 
 
@@ -67,12 +67,12 @@ def generate_pen_return_gcode(pen_y_position, lift_pen_height=20):
     """
     return [
         f"G0 Z40 ; Lift pen\n",
-        "G1 Y275 ; align with pen's Y-axis\n",
+        "G1 Y260 ; align with pen's Y-axis\n",
         f"G0 X{pen_y_position} ; Align with pen's Y-axis at X=1\n",
-        "G1 Y280; behind the pen\n",
+        "G1 Y284; behind the pen\n",
         "G0 Z0 ; Lower pen to place back\n",
         "M3 S100; open servo\n",
-        "G1 Y275 ; move back\n",
+        "G1 Y284 ; move back\n",
     ]
 
 
