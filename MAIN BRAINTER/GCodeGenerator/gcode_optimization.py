@@ -63,19 +63,13 @@ def parse_gcode(gcode_lines):
     return commands
 
 
-# Helper function to merge consecutive lines with the same Y ordinate and X ordinates separated by 1
+# Helper function to merge consecutive lines that are directly connected or separated by 1 in Y
 def merge_consecutive_lines(lines):
     merged_lines = []
     i = 0
     while i < len(lines):
         current_line = lines[i]
-        # As long as there is a next line that can be merged with the current one, do so.
-        while (
-            i + 1 < len(lines)
-            and current_line["end_pos"][1] == lines[i + 1]["start_pos"][1]
-            and abs(current_line["end_pos"][0] - lines[i + 1]["start_pos"][0]) <= 1
-        ):
-            # Merge current line with the next one
+        while i + 1 < len(lines) and can_merge(current_line, lines[i + 1]):
             next_line = lines[i + 1]
             current_line = {
                 "start_pos": current_line["start_pos"],
@@ -87,26 +81,42 @@ def merge_consecutive_lines(lines):
     return merged_lines
 
 
-# Update the generate_optimized_gcode function to use merge_consecutive_lines
+# Check if two lines can be merged with additional X range condition and adjusted Y continuity check
+def can_merge(line1, line2):
+    x_range_ok = abs(line1["end_pos"][0] - line2["start_pos"][0]) <= 3
+    y_continuity = abs(line2["start_pos"][1] - line1["end_pos"][1]) <= 2
+
+    return y_continuity and x_range_ok
+
+
+# Update the generate_optimized_gcode function to handle pen lifts and drops for non-continuations
 def generate_optimized_gcode(optimized_order):
     optimized_gcode = [
         "G90 ; Use absolute positioning",
         "G21 ; Set units to millimeters",
+        # "G0 Z40 ; Lift pen initially",
     ]
     # Merge consecutive lines before generating G-code
     merged_lines = merge_consecutive_lines(optimized_order)
+    last_pos = (0, 0)
     for line in merged_lines:
         start_pos = line["start_pos"]
         end_pos = line["end_pos"]
-        # Only lift and lower the pen if moving to a new start position
-        if start_pos != end_pos:  # Check if it's not a redundant move
-            optimized_gcode.append(f"G0 Z40 ; Lift pen")
+        # Only lift and lower the pen if moving to a new start position that isn't a direct continuation
+        if last_pos != start_pos:
+            if (
+                abs(last_pos[1] - start_pos[1]) > 2
+            ):  # Check if Y continuity is broken beyond ±2 units
+                optimized_gcode.append(
+                    f"G0 Z40 ; Lift pen before moving to a new start"
+                )
             optimized_gcode.append(
                 f"G0 X{start_pos[0]} Y{start_pos[1]} ; Move to start"
             )
-            optimized_gcode.append("G0 Z0 ; Lower pen")
-            optimized_gcode.append(f"G1 X{end_pos[0]} Y{end_pos[1]} ; Draw line")
-    optimized_gcode.append("G0 Z40 ; Lift pen")  # Lift pen after finishing
+            optimized_gcode.append(f"G0 Z0 ; Lower pen to start drawing")
+        optimized_gcode.append(f"G1 X{end_pos[0]} Y{end_pos[1]} ; Draw line")
+        last_pos = end_pos
+    optimized_gcode.append("G0 Z40 ; Lift pen after finishing")
     return optimized_gcode
 
 

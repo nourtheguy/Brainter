@@ -5,7 +5,8 @@ from GCodeGenerator.similarityscore import *
 from GCodeGenerator.emptyfolder import *
 from GCodeGenerator.color_segmentation import *
 from GCodeGenerator.vectorization_findcontours import *
-from GCodeGenerator.svg_parser import *
+
+# from GCodeGenerator.svg_parser import *
 from GCodeGenerator.gcode_generation import *
 from GCodeGenerator.gcode_optimization import *
 from GCodeGenerator.colorchangingmechanism import *

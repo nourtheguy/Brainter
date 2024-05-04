@@ -76,9 +76,9 @@ def generate_pen_return_gcode(pen_y_position, lift_pen_height=20):
     ]
 
 
-def combine_gcode(folder_path, lift_pen_height=1):
+def combine_gcode(folder_path, lift_pen_height=20):
     """
-    Combines G-code files from a directory, adding commands to pick up and return pens as needed.
+    Combines G-code files from a directory, adding commands to pick up, lower, lift, and return pens as needed.
 
     Parameters:
     - folder_path: The path to the directory containing the G-code files.
@@ -96,52 +96,46 @@ def combine_gcode(folder_path, lift_pen_height=1):
         "F1000\n",
     ]
     sorted_files = [
-        f
-        for f in sorted(os.listdir(folder_path))
-        # if f != os.path.basename(output_filename)
+        f for f in sorted(os.listdir(folder_path)) if f.endswith("_gcode.txt")
     ]
 
     for filename in sorted_files:
         # Ignore the specific file "Lightgrey_gcode.txt"
-        if filename in ["Lightgrey_gcode.txt","Grey_gcode.txt","Teal_gcode.txt","Pink_gcode.txt","Yellow_gcode.txt","Blue_gcode.txt"]:
+        if filename in ["Lightgrey_gcode.txt"]:
             continue
-
-        if filename.endswith("_gcode.txt"):
-            color_name = filename.split("_")[0].capitalize()
-            if color_name in color_to_y_position:
-                pen_y_position = color_to_y_position[color_name]
-                if not hasattr(combine_gcode, "previous_pen_y_position"):
-                    # For the first pen, directly pick it up
-                    combined_gcode.extend(
-                        generate_pen_pickup_gcode(pen_y_position, lift_pen_height)
-                    )
-                else:
-                    # Return the previous pen and pick the next one
-                    combined_gcode.extend(
-                        generate_pen_return_gcode(
-                            combine_gcode.previous_pen_y_position, lift_pen_height
-                        )
-                    )
-                    combined_gcode.extend(
-                        generate_pen_pickup_gcode(pen_y_position, lift_pen_height)
-                    )
-
+        color_name = filename.split("_")[0].capitalize()
+        if color_name in color_to_y_position:
+            pen_y_position = color_to_y_position[color_name]
+            if not hasattr(combine_gcode, "previous_pen_y_position"):
+                # For the first pen, directly pick it up
                 combined_gcode.extend(
-                    read_gcode_file(os.path.join(folder_path, filename))
+                    generate_pen_pickup_gcode(pen_y_position, lift_pen_height)
                 )
-                combine_gcode.previous_pen_y_position = pen_y_position
-
-                if (
-                    filename == sorted_files[-1]
-                ):  # After the last drawing, return the pen
-                    combined_gcode.extend(
-                        generate_pen_return_gcode(pen_y_position, lift_pen_height)
-                    )
+                combined_gcode.append("G0 Z0 ; Lower pen to start drawing\n")
             else:
-                print(
-                    f"Color '{color_name}' not recognized. Skipping file '{filename}'."
+                # Return the previous pen and pick the next one
+                combined_gcode.extend(
+                    generate_pen_return_gcode(
+                        combine_gcode.previous_pen_y_position, lift_pen_height
+                    )
                 )
-    combined_gcode.append("G0 X2 Y10  ; Initial machine start position\n")
+                combined_gcode.extend(
+                    generate_pen_pickup_gcode(pen_y_position, lift_pen_height)
+                )
+                combined_gcode.append("G0 Z0 ; Lower pen to start drawing\n")
+
+            combined_gcode.extend(read_gcode_file(os.path.join(folder_path, filename)))
+            combined_gcode.append("G0 Z40 ; Lift pen after drawing\n")
+            combine_gcode.previous_pen_y_position = pen_y_position
+
+            if filename == sorted_files[-1]:  # After the last drawing, return the pen
+                combined_gcode.extend(
+                    generate_pen_return_gcode(pen_y_position, lift_pen_height)
+                )
+        else:
+            print(f"Color '{color_name}' not recognized. Skipping file '{filename}'.")
+
+    combined_gcode.append("G0 X2 Y10  ; Return to initial machine start position\n")
     combined_gcode.append("M5 ; Turning off spindle \n")
     return combined_gcode
 

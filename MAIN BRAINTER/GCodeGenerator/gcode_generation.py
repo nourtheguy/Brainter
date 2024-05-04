@@ -14,21 +14,30 @@ def gcode_generation(input_directory, output_directory):
 
     def svg_to_gcode(lines):
         gcode = ["G90 ; Use absolute positioning", "G21 ; Set units to millimeters"]
-        offset_y = 0  # Define the Y offset
         for line in lines:
             x1, y1, x2, y2 = (
-                line.get("x1"),
-                str(float(line.get("y1")) + offset_y),  # Apply Y offset to y1
-                line.get("x2"),
-                str(float(line.get("y2")) + offset_y),  # Apply Y offset to y2
+                float(line.get("x1")),
+                float(line.get("y1")),
+                float(line.get("x2")),
+                float(line.get("y2")),
             )
-            gcode += [
-                "G0 Z50 ; Lift pen",
-                f"G0 X{x1} Y{y1} ; Move to start",
-                "G0 Z0 ; Lower pen",
-                f"G1 X{x2} Y{y2} ; Draw line",
-            ]
-        gcode.append("G0 Z50 ; Lift pen")
+            if x1 == x2:  # Vertical line
+                if y1 > y2:
+                    y1, y2 = y2, y1  # Ensure y1 is always less than y2 for consistency
+                gcode += [
+                    "G0 Z40 ; Lift pen",
+                    f"G0 X{x1} Y{y1} ; Move to start of vertical line",
+                    "G0 Z0 ; Lower pen",
+                    f"G1 X{x2} Y{y2} ; Draw vertical line",
+                ]
+            else:  # Horizontal line or any line
+                gcode += [
+                    "G0 Z40 ; Lift pen",
+                    f"G0 X{x1} Y{y1} ; Move to start",
+                    "G0 Z0 ; Lower pen",
+                    f"G1 X{x2} Y{y2} ; Draw line",
+                ]
+        gcode.append("G0 Z40 ; Lift pen")
         return gcode
 
     def generate_gcode_for_svg(svg_file_path, output_directory):
